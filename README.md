@@ -1,6 +1,6 @@
 # CardConnect
 
-TODO: Write a gem description
+CardConnect API Ruby Wrapper
 
 ## Installation
 
