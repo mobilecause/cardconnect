@@ -1,5 +1,18 @@
 require "cardconnect/version"
 
+require 'cardconnect/configuration'
+
 module CardConnect
-  # Your code goes here...
+
+  class << self
+
+    def configure
+      yield(configuration)
+    end
+
+    def configuration
+      @configuration ||= Configuration.new
+    end
+
+  end
 end

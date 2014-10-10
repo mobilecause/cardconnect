@@ -1,0 +1,28 @@
+require 'test_helper'
+
+describe Configuration do
+  before do
+    @config = Configuration.new
+  end
+
+  after do
+    @config = nil
+  end
+
+  it 'must respond to merchant id' do
+    @config.must_respond_to :merchant_id
+  end
+
+  it 'must respond to api username' do
+    @config.must_respond_to :api_username
+  end
+
+  it 'must respond to api password' do
+    @config.must_respond_to :api_password
+  end
+
+  it 'must respond to endpoint' do
+    @config.must_respond_to :endpoint
+  end
+
+end
