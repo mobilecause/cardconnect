@@ -1,6 +1,12 @@
 require "cardconnect/version"
 
+require 'faraday'
+require 'json'
+
 require 'cardconnect/configuration'
+
+require 'cardconnect/services/service'
+require 'cardconnect/services/authorization'
 
 module CardConnect
 
@@ -14,5 +20,8 @@ module CardConnect
       @configuration ||= Configuration.new
     end
 
+    def auth
+      Service::Authorization.new.request
+    end
   end
 end

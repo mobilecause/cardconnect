@@ -25,12 +25,12 @@ TODO: Write usage instructions here
 For Rails in config/initializers/cardconnect.rb
 
 ```ruby
-  CardConnect.configure do |config|
-    config.merchant_id = '<merchant-id-number>'
-    config.api_username = '<api user id>'
-    config.api_password = '<api user password>'
-    config.endpoint = 'https://url.goeshere.com:6443'
-  end
+CardConnect.configure do |config|
+  config.merchant_id = '<merchant-id-number>'
+  config.api_username = '<api user id>'
+  config.api_password = '<api user password>'
+  config.endpoint = 'https://url.goeshere.com:6443'
+end
 ```
 
 ## Contributing
