@@ -4,11 +4,11 @@ require 'faraday'
 require 'json'
 
 require 'cardconnect/configuration'
-require 'cardconnect/authorization_request'
-require 'cardconnect/authorization_response'
+require 'cardconnect/services/authorization/authorization_request'
+require 'cardconnect/services/authorization/authorization_response'
 
 require 'cardconnect/services/service'
-require 'cardconnect/services/authorization'
+require 'cardconnect/services/authorization/authorization'
 
 module CardConnect
 

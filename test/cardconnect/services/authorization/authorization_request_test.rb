@@ -9,18 +9,6 @@ describe AuthorizationRequest do
     @request = nil
   end
 
-  it 'should respond to all the required fields' do
-    AuthorizationRequest::REQUIRED_FIELDS.each do |field|
-      @request.must_respond_to field
-    end
-  end
-
-  it 'should respond to all the optional fields' do
-    AuthorizationRequest::OPTIONAL_FIELDS.each do |field|
-      @request.must_respond_to field
-    end
-  end
-
   describe "#valid?" do
     before do
       @request.merchid = '123'
