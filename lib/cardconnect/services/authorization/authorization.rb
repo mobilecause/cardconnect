@@ -6,6 +6,7 @@ module CardConnect
       def initialize
         @resource_name = '/auth'
         @config = CardConnect.configuration
+        @connection = CardConnect.connection
         @errors = []
       end
 
@@ -14,27 +15,19 @@ module CardConnect
       end
 
       def build_request(params = {})
-        req = params.merge(:merchid => @config.merchant_id)
+        req = params.merge(merchid: @config.merchant_id)
         @request = AuthorizationRequest.new(req)
       end
 
-      def send_request
-        if request.valid?
-          conn = Faraday.new(:url => @config.endpoint)
+      def submit_authorization
+        @response = put(request.payload)
+      end
 
-          conn.basic_auth(@config.api_username, @config.api_password)
+      private
 
-          cc_response = conn.put path do |req|
-            req.headers['Content-Type'] = 'application/json'
-            req.body = request.payload
-          end
-
-          @response = AuthorizationResponse.new(cc_response.body)
-        else
-          @response = AuthorizationResponse.new(request)
-        end
-
-        @response
+      def put(body = nil)
+        response = @connection.put(path, body)
+        AuthorizationResponse.new(response.body)
       end
     end
   end

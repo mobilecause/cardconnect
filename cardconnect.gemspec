@@ -23,4 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'minitest', '~> 5.4'
 
   spec.add_dependency 'faraday', '~> 0.9.0'
+  spec.add_dependency 'faraday_middleware', '~> 0.9.1'
 end

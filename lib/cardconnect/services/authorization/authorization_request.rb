@@ -28,7 +28,7 @@ module CardConnect
       FIELDS.each do |field|
         payload.merge!({field => send(field)})
       end
-      JSON.generate(payload)
+      payload
     end
 
     private

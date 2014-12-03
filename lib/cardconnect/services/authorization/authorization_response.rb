@@ -1,5 +1,5 @@
 module CardConnect
-  class AuthorizationResponse# < BaseResponse
+  class AuthorizationResponse
     attr_reader :errors, :request_payload, :request
 
     FIELDS = [:respstat, :retref, :account, :token, :amount, :merchid, :respcode,
@@ -16,8 +16,7 @@ module CardConnect
         @request_payload = response.payload
         @errors = response.errors
       else
-        hash = JSON.parse(response)
-        set_attributes(hash)
+        set_attributes(response)
         @errors = []
         process_response
       end
@@ -42,9 +41,9 @@ module CardConnect
       case respstat
         when STATUS_APPROVED
         when STATUS_RETRY
-          @errors << "Request was not approved because of #{resptext}"
+          @errors << "Request was not approved because of #{respcode}: #{resptext}. Please Retry."
         when STATUS_DECLINED
-          @errors << "Request was not approved because of #{resptext}"
+          @errors << "Request was not approved because of #{respcode}: #{resptext}"
         else
           @errors << "Card Connect made you some problems."
       end
