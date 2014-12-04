@@ -86,7 +86,7 @@ describe AuthorizationRequest do
     end
 
     it 'should generate JSON with all the right values' do
-      @request.payload.must_equal JSON.generate(valid_params)
+      @request.payload.must_equal valid_params
     end
   end
 end

@@ -3,6 +3,7 @@ require 'faraday_middleware'
 
 module CardConnect
   class Connection
+
     def initialize
       @config = CardConnect.configuration
       @headers = {user_agent: "CardConnectRubyGem/#{CardConnect::VERSION}"}
@@ -20,5 +21,6 @@ module CardConnect
         end
       end
     end
+
   end
 end
