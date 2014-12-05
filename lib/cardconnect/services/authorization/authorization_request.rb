@@ -17,12 +17,6 @@ module CardConnect
       set_attributes(attrs)
     end
 
-    def valid?
-      validate
-      return true if @errors.empty?
-      false
-    end
-
     def payload
       payload = {}
       FIELDS.each do |field|
@@ -41,10 +35,5 @@ module CardConnect
       end
     end
 
-    def validate
-      REQUIRED_FIELDS.each do |field|
-        @errors << "#{field} cannot be blank" if send(field).nil? || send(field).empty?
-      end
-    end
   end
 end

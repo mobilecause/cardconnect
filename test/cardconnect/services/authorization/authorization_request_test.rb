@@ -9,50 +9,6 @@ describe AuthorizationRequest do
     @request = nil
   end
 
-  describe "#valid?" do
-    before do
-      @request.merchid = '123'
-      @request.account = '4111111111111111'
-      @request.expiry = '122015'
-      @request.amount = '40.00'
-      @request.currency = 'USD'
-    end
-
-    it 'should be true all required fields have a value' do
-      @request.valid?.must_equal true
-    end
-
-    it 'should be false and have error message if merchid is missing' do
-      @request.merchid = nil
-      @request.valid?.must_equal false
-      @request.errors.must_include "merchid cannot be blank"
-    end
-
-    it 'should be false and have error message if account is missing' do
-      @request.account = nil
-      @request.valid?.must_equal false
-      @request.errors.must_include "account cannot be blank"
-    end
-
-    it 'should be false and have error message if expiry is missing' do
-      @request.expiry = nil
-      @request.valid?.must_equal false
-      @request.errors.must_include "expiry cannot be blank"
-    end
-
-    it 'should be false and have error message if amount is missing' do
-      @request.amount = nil
-      @request.valid?.must_equal false
-      @request.errors.must_include "amount cannot be blank"
-    end
-
-    it 'should be false and have error message if currency is missing' do
-      @request.currency = nil
-      @request.valid?.must_equal false
-      @request.errors.must_include "currency cannot be blank"
-    end
-  end
-
   describe "#payload" do
     def valid_params
       {
