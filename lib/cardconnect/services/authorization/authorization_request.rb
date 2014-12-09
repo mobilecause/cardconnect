@@ -34,6 +34,5 @@ module CardConnect
         send("#{attribute}=", attributes[attribute])
       end
     end
-
   end
 end

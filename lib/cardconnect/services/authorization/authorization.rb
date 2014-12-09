@@ -26,8 +26,12 @@ module CardConnect
       private
 
       def put(body = nil)
-        response = @connection.put(path, body)
-        AuthorizationResponse.new(response.body)
+        begin
+          response = @connection.put(path, body)
+          AuthorizationResponse.new(response.body)
+        rescue Faraday::ResourceNotFound => e
+          puts e.message
+        end
       end
     end
   end

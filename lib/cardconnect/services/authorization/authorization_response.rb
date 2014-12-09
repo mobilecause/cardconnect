@@ -18,7 +18,7 @@ module CardConnect
       else
         set_attributes(response)
         @errors = []
-        process_response
+        process
       end
     end
 
@@ -26,18 +26,25 @@ module CardConnect
       @errors.empty?
     end
 
+    def body
+      body = {}
+      FIELDS.each do |attr|
+        body.merge!({attr => send(attr)})
+      end
+      body
+    end
+
     private
 
     def set_attributes(attributes)
-      attributes = attributes.with_indifferent_access
       return if attributes.empty?
-      FIELDS.each do |attribute|
-        next unless attributes[attribute]
-        send("#{attribute}=", attributes[attribute])
+      FIELDS.each do |attr|
+        next unless attributes[attr]
+        send("#{attr}=", attributes[attr])
       end
     end
 
-    def process_response
+    def process
       case respstat
         when STATUS_APPROVED
         when STATUS_RETRY

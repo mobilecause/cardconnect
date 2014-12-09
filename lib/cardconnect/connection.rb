@@ -16,9 +16,20 @@ module CardConnect
           faraday.request :json
 
           faraday.response :json, :content_type => /\bjson$/
+          faraday.response :raise_error
 
           faraday.adapter Faraday.default_adapter
         end
+      end
+    end
+
+    def ping_server
+      begin
+        connection.get('/cardconnect/rest')
+      rescue Faraday::ResourceNotFound => e
+        return e.message
+      rescue Faraday::ClientError => e
+        return e
       end
     end
 
