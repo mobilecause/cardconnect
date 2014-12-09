@@ -1,5 +1,6 @@
 module CardConnect
   class AuthorizationRequest
+    include Utils
 
     REQUIRED_FIELDS = [:merchid, :account, :expiry, :amount, :currency]
 
@@ -14,7 +15,7 @@ module CardConnect
 
     def initialize(attrs = {})
       @errors = []
-      set_attributes(attrs)
+      set_attributes(attrs, FIELDS)
     end
 
     def payload
@@ -25,14 +26,5 @@ module CardConnect
       payload
     end
 
-    private
-
-    def set_attributes(attributes)
-      return if attributes.empty?
-      FIELDS.each do |attribute|
-        next unless attributes[attribute]
-        send("#{attribute}=", attributes[attribute])
-      end
-    end
   end
 end

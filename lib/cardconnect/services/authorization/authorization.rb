@@ -1,6 +1,8 @@
 module CardConnect
   module Service
     class Authorization
+      include Utils
+
       attr_reader :request, :response
 
       def initialize
@@ -16,7 +18,7 @@ module CardConnect
 
       def build_request(params = {})
         req = params.merge(merchid: @config.merchant_id)
-        @request = AuthorizationRequest.new(req)
+        @request = AuthorizationRequest.new(symbolize_keys(req))
       end
 
       def submit_authorization
@@ -28,11 +30,12 @@ module CardConnect
       def put(body = nil)
         begin
           response = @connection.put(path, body)
-          AuthorizationResponse.new(response.body)
+          AuthorizationResponse.new(symbolize_keys(response.body))
         rescue Faraday::ResourceNotFound => e
           puts e.message
         end
       end
+
     end
   end
 end

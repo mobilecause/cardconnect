@@ -1,5 +1,6 @@
 require "cardconnect/version"
 
+require 'cardconnect/utils'
 require 'cardconnect/configuration'
 require 'cardconnect/connection'
 

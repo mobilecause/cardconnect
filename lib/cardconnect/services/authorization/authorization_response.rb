@@ -1,5 +1,7 @@
 module CardConnect
   class AuthorizationResponse
+    include Utils
+
     attr_reader :errors, :request_payload, :request
 
     FIELDS = [:respstat, :retref, :account, :token, :amount, :merchid, :respcode,
@@ -16,7 +18,7 @@ module CardConnect
         @request_payload = response.payload
         @errors = response.errors
       else
-        set_attributes(response)
+        set_attributes(response, FIELDS)
         @errors = []
         process
       end
@@ -35,14 +37,6 @@ module CardConnect
     end
 
     private
-
-    def set_attributes(attributes)
-      return if attributes.empty?
-      FIELDS.each do |attr|
-        next unless attributes[attr]
-        send("#{attr}=", attributes[attr])
-      end
-    end
 
     def process
       case respstat

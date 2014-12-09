@@ -23,15 +23,5 @@ module CardConnect
       end
     end
 
-    def ping_server
-      begin
-        connection.get('/cardconnect/rest')
-      rescue Faraday::ResourceNotFound => e
-        return e.message
-      rescue Faraday::ClientError => e
-        return e
-      end
-    end
-
   end
 end
