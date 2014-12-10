@@ -17,6 +17,15 @@ namespace :cardconnect do
       config.api_password = args.api_password
       config.endpoint = args.api_endpoint
     end
+
+  end
+
+  desc "Ping the API Server"
+  task :ping, [:merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+    cardconnect_configure(args)
+
+    response = CardConnect::Connection.new.ping_server
+    puts response.body
   end
 
   desc "Simulate an Authorization request"
@@ -36,7 +45,7 @@ namespace :cardconnect do
     auth = CardConnect.authorization_service
     auth.build_request(auth_params)
     response = auth.submit_authorization
-    puts response.inspect
+
     puts response.body
     puts response.respstat
   end
