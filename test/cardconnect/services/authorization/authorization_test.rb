@@ -2,7 +2,10 @@ require 'test_helper'
 
 describe Service::Authorization do
   before do
-    @service = Service::Authorization.new
+    @connection = Connection.new.connection do |stubs|
+      stubs.put(@service.path) { [200, {}, valid_auth_response] }
+    end
+    @service = Service::Authorization.new(@connection)
   end
 
   after do
@@ -38,4 +41,18 @@ describe Service::Authorization do
       @service.request.currency.must_equal 'USD'
     end
   end
+
+  describe '#submit_authorization' do
+    it 'raises an error when there is no request' do
+      @service.request.nil?.must_equal true
+      proc { @service.submit_authorization }.must_raise CardConnect::Error
+    end
+
+    it 'creates a response when a valid request is processed' do
+      @service.build_request(valid_auth_request)
+      @service.submit_authorization
+      @service.response.must_be_kind_of AuthorizationResponse
+    end
+  end
+
 end

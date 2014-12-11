@@ -5,10 +5,10 @@ module CardConnect
 
       attr_reader :request, :response
 
-      def initialize
+      def initialize(connection)
         @resource_name = '/auth'
         @config = CardConnect.configuration
-        @connection = CardConnect.connection
+        @connection = connection
         @errors = []
       end
 
@@ -22,6 +22,7 @@ module CardConnect
       end
 
       def submit_authorization
+        raise CardConnect::Error, "Request has not been built" if request.nil?
         @response = put(request.payload)
       end
 

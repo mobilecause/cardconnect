@@ -15,7 +15,7 @@ describe Connection do
     end
 
     it 'must have a URL that matches the configured endpoint' do
-      @connection.url_prefix.host.must_equal "test.host"
+      @connection.url_prefix.host.must_equal URI.parse(CardConnect.configuration.endpoint).host
       @connection.url_prefix.scheme.must_equal "https"
     end
 
@@ -30,10 +30,6 @@ describe Connection do
 
       it 'must have a handler for parsing the json response third' do
         @connection.builder.handlers[2].must_be :===, FaradayMiddleware::ParseJson
-      end
-
-      it 'must have a handler for the http adapter last' do
-        @connection.builder.handlers.last.must_be :===, Faraday::Adapter::NetHttp
       end
     end
   end

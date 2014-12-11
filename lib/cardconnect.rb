@@ -1,6 +1,7 @@
 require "cardconnect/version"
 
 require 'cardconnect/utils'
+require 'cardconnect/error'
 require 'cardconnect/configuration'
 require 'cardconnect/connection'
 
@@ -22,12 +23,12 @@ module CardConnect
       @configuration ||= Configuration.new
     end
 
-    def authorization_service
-      @authorization_service ||= Service::Authorization.new
-    end
-
     def connection
       @connection ||= Connection.new.connection
+    end
+
+    def authorization_service
+      @authorization_service ||= Service::Authorization.new(connection)
     end
 
   end
