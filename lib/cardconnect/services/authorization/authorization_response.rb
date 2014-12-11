@@ -2,7 +2,7 @@ module CardConnect
   class AuthorizationResponse
     include Utils
 
-    attr_reader :errors, :request_payload, :request
+    attr_reader :errors
 
     FIELDS = [:respstat, :retref, :account, :token, :amount, :merchid, :respcode,
               :resptext, :respproc, :avsresp, :cvvresp, :authcode, :commcard]
@@ -14,14 +14,9 @@ module CardConnect
     STATUS_DECLINED = 'C'
 
     def initialize(response)
-      if response.is_a?(AuthorizationRequest)
-        @request_payload = response.payload
-        @errors = response.errors
-      else
-        set_attributes(response, FIELDS)
-        @errors = []
-        process
-      end
+      set_attributes(response, FIELDS)
+      @errors = []
+      process
     end
 
     def success?
@@ -39,14 +34,8 @@ module CardConnect
     private
 
     def process
-      case respstat
-        when STATUS_APPROVED
-        when STATUS_RETRY
-          @errors << "Request was not approved because of #{respcode}: #{resptext}. Please Retry."
-        when STATUS_DECLINED
-          @errors << "Request was not approved because of #{respcode}: #{resptext}"
-        else
-          @errors << "Card Connect made you some problems."
+      if [STATUS_RETRY, STATUS_DECLINED].include?(respstat)
+        @errors << "#{respcode}: #{resptext}"
       end
     end
   end

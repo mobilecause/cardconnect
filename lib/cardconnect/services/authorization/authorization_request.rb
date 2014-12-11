@@ -11,7 +11,6 @@ module CardConnect
     FIELDS = REQUIRED_FIELDS + OPTIONAL_FIELDS
 
     attr_accessor *FIELDS
-    attr_reader :errors
 
     def initialize(attrs = {})
       @errors = []

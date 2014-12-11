@@ -47,7 +47,6 @@ namespace :cardconnect do
     response = auth.submit_authorization
 
     puts response.body
-    puts response.respstat
   end
 
 end
