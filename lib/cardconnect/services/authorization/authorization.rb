@@ -5,6 +5,10 @@ module CardConnect
 
       attr_reader :request, :response
 
+      # Initializes an Authorization Service
+      #
+      # @param connection [CardConnect::Connection]
+      # @return CardConnect::Service::Authorization
       def initialize(connection)
         @resource_name = '/auth'
         @config = CardConnect.configuration

@@ -12,11 +12,16 @@ module CardConnect
 
     attr_accessor *FIELDS
 
+    # Initializes a new Authorization Request
+    #
+    # @param attrs [Hash]
+    # @return CardConnect::AuthorizationRequest
     def initialize(attrs = {})
       @errors = []
       set_attributes(attrs, FIELDS)
     end
 
+    # Builds the request payload
     def payload
       payload = {}
       FIELDS.each do |field|

@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rake'
+gem 'yard'
 
 group :test do
   gem 'minitest', '>= 5.4'
