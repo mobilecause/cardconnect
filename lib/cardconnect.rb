@@ -28,7 +28,9 @@ module CardConnect
     end
 
     def authorization_service
-      @authorization_service ||= Service::Authorization.new(connection)
+      @authorization_service ||= Service::Authorization.new
+    end
+
     end
 
   end

@@ -9,7 +9,7 @@ module CardConnect
       #
       # @param connection [CardConnect::Connection]
       # @return CardConnect::Service::Authorization
-      def initialize(connection)
+      def initialize(connection = CardConnect.connection)
         @resource_name = '/auth'
         @config = CardConnect.configuration
         @connection = connection
