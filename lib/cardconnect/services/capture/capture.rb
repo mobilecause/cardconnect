@@ -1,12 +1,18 @@
 module CardConnect
   module Service
     class Capture
+      include Utils
+
       attr_reader :request, :response
 
-      def initialize
+      # Initializes a Capture Service
+      #
+      # @param connection [CardConnect::Connection]
+      # @return CardConnect::Service::Capture
+      def initialize(connection = CardConnect.connection)
         @resource_name = '/capture'
         @config = CardConnect.configuration
-        @connection = CardConnect.connection
+        @connection = connection
         @errors = []
       end
 
@@ -16,10 +22,11 @@ module CardConnect
 
       def build_request(params = {})
         req = params.merge(merchid: @config.merchant_id)
-        @request = CaptureRequest.new(req)
+        @request = CaptureRequest.new(symbolize_keys(req))
       end
 
-      def submit_authorization
+      def submit
+        raise CardConnect::Error, "Request has not been built" if request.nil?
         @response = put(request.payload)
       end
 

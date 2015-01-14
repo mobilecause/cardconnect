@@ -2,6 +2,9 @@ require 'cardconnect'
 
 require 'minitest/autorun'
 
+require 'request_stubs'
+require 'response_stubs'
+
 include CardConnect
 
 CardConnect.configure do |config|
@@ -26,43 +29,4 @@ class Connection
       end
     end
   end
-end
-
-def valid_auth_response
-  {
-      "respstat" => "A",
-      "account" => "41XXXXXXXXXX1111",
-      "token" => "9419786452781111",
-      "retref" => "343005123105",
-      "amount" => "111",
-      "merchid" => "020594000000",
-      "respcode" => "00",
-      "resptext" => "Approved",
-      "avsresp" => "9",
-      "cvvresp" => "M",
-      "authcode" => "046221",
-      "respproc" => "FNOR"
-  }
-end
-
-def valid_auth_request
-  {
-      "merchid" => "000000927996",
-      "accttype" => "VISA",
-      "orderid" => "AB-11-9876",
-      "account" => "4111111111111111",
-      "expiry" => "1212",
-      "amount" => "0",
-      "currency" => "USD",
-      "name" => "TOM JONES",
-      "address" => "123 MAIN STREET",
-      "city" => "anytown",
-      "region" => "NY",
-      "country" => "US",
-      "postal" => "55555",
-      "ecomind" => "E",
-      "cvv2" => "123",
-      "track" => nil,
-      "tokenize" => "Y"
-  }
 end

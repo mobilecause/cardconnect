@@ -25,7 +25,7 @@ module CardConnect
         @request = AuthorizationRequest.new(symbolize_keys(req))
       end
 
-      def submit_authorization
+      def submit
         raise CardConnect::Error, "Request has not been built" if request.nil?
         @response = put(request.payload)
       end
