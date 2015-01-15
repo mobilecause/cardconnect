@@ -6,6 +6,7 @@ require 'request_stubs'
 require 'response_stubs'
 
 include CardConnect
+include Utils
 
 CardConnect.configure do |config|
   config.merchant_id = "merchant123"
