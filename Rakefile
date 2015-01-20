@@ -49,12 +49,12 @@ namespace :cardconnect do
   end
 
   desc "Simulate a Capture request"
-  task :capture_request, [:merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+  task :capture_request, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
     cardconnect_configure(args)
 
     capture_params = {
         'merchid' => CardConnect.configuration.merchant_id,
-        'retref' => '020169158825'
+        'retref' => args.retref
     }
 
     capture = CardConnect.capture_service
