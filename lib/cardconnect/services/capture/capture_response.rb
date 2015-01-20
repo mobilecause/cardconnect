@@ -2,7 +2,7 @@ module CardConnect
   class CaptureResponse
     include Utils
 
-    attr_reader :errors, :request
+    attr_reader :errors
 
     FIELDS = [:merchid, :account, :amount, :retref, :setlstat]
 
@@ -23,6 +23,14 @@ module CardConnect
 
     def success?
       @errors.empty?
+    end
+
+    def body
+      body = {}
+      FIELDS.each do |attr|
+        body.merge!({attr => send(attr)})
+      end
+      body
     end
 
   end

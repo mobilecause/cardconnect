@@ -48,6 +48,18 @@ namespace :cardconnect do
     puts response.body
   end
 
+  desc "Simulate a Capture request"
+  task :capture_request, [:merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+    cardconnect_configure(args)
+
+    capture_params = {
+        'merchid' => CardConnect.configuration.merchant_id,
+        'retref' => '020169158825'
+    }
+
+    capture = CardConnect.capture_service
+    capture.build_request(capture_params)
+    response = capture.submit
 
     puts response.body
   end
