@@ -30,21 +30,24 @@ namespace :cardconnect do
 
   desc "Simulate an Authorization request"
   task :auth_request, [:merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
-
     cardconnect_configure(args)
 
     auth_params = {
         'account' => '4111111111111111',
         "accttype" => "VISA",
         'expiry' => '1220',
-        'amount' => '0',
+        'amount' => '1000',
         'currency' => 'USD',
         "tokenize" => "Y"
     }
 
     auth = CardConnect.authorization_service
     auth.build_request(auth_params)
-    response = auth.submit_authorization
+    response = auth.submit
+
+    puts response.body
+  end
+
 
     puts response.body
   end
