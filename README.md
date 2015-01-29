@@ -20,9 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
-
 For Rails in config/initializers/cardconnect.rb
+
+NOTE: Merchant ID can also be passed in with params when building a request. If no ID is passed in then the request will use the ID from the configuration.
 
 ```ruby
 CardConnect.configure do |config|
