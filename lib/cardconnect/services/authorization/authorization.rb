@@ -21,8 +21,9 @@ module CardConnect
       end
 
       def build_request(params = {})
-        req = params.merge(merchid: @config.merchant_id)
-        @request = AuthorizationRequest.new(symbolize_keys(req))
+        req = symbolize_keys(params)
+        req = req.merge(merchid: @config.merchant_id) unless req.has_key?(:merchid)
+        @request = AuthorizationRequest.new(req)
       end
 
       def submit

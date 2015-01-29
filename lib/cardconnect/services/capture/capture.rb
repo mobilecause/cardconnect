@@ -21,8 +21,9 @@ module CardConnect
       end
 
       def build_request(params = {})
-        req = params.merge(merchid: @config.merchant_id)
-        @request = CaptureRequest.new(symbolize_keys(req))
+        req = symbolize_keys(params)
+        req = req.merge(merchid: @config.merchant_id) unless req.has_key?(:merchid)
+        @request = CaptureRequest.new(req)
       end
 
       def submit
@@ -33,8 +34,12 @@ module CardConnect
       private
 
       def put(body = nil)
-        response = @connection.put(path, body)
-        CaptureResponse.new(response.body)
+        begin
+          response = @connection.put(path, body)
+          CaptureResponse.new(symbolize_keys(response.body))
+        rescue Faraday::ResourceNotFound => e
+          puts e.message
+        end
       end
     end
   end

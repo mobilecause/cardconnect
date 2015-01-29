@@ -25,18 +25,21 @@ describe Service::Capture do
       @valid_params = nil
     end
 
-    it 'adds the merchant id to the params' do
-      @service.build_request(@valid_params)
-      @service.request.merchid.must_equal CardConnect.configuration.merchant_id
-    end
-
-    it 'creates a Capture request object with the right params' do
+    it 'creates a Capture request object with the passed in params' do
       @service.build_request(@valid_params)
 
       @service.request.must_be_kind_of CaptureRequest
 
-      @service.request.merchid.must_equal 'merchant123'
+      @service.request.merchid.must_equal '000000927996'
       @service.request.retref.must_equal '288002073633'
+    end
+
+    it 'uses default merchant ID if merchid is not passed in' do
+      @service.build_request(@valid_params.reject!{|k,v| k == 'merchid' })
+
+      @service.request.must_be_kind_of CaptureRequest
+
+      @service.request.merchid.must_equal 'merchant123'
     end
   end
 
