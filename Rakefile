@@ -48,6 +48,27 @@ namespace :cardconnect do
     puts response.body
   end
 
+  desc "Simulate an Authorization Capture request"
+  task :auth_capture_request, [:merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+    cardconnect_configure(args)
+
+    auth_params = {
+        'account' => '4111111111111111',
+        "accttype" => "VISA",
+        'expiry' => '1220',
+        'amount' => '1000',
+        'currency' => 'USD',
+        "tokenize" => "Y",
+        "capture" => "Y"
+    }
+
+    auth = CardConnect.authorization_service
+    auth.build_request(auth_params)
+    response = auth.submit
+
+    puts response.body
+  end
+
   desc "Simulate a Capture request"
   task :capture_request, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
     cardconnect_configure(args)
@@ -60,6 +81,23 @@ namespace :cardconnect do
     capture = CardConnect.capture_service
     capture.build_request(capture_params)
     response = capture.submit
+
+    puts response.body
+  end
+
+  desc "Simulate a Settlement Status request"
+  task :settle_status, [:date, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+    # Date format is MMDD
+    cardconnect_configure(args)
+
+    settle_params = {
+        'merchid' => CardConnect.configuration.merchant_id,
+        'date' => args[:date]
+    }
+
+    status = CardConnect.settlement_status_service
+    status.build_request(settle_params)
+    response = status.submit
 
     puts response.body
   end
