@@ -25,3 +25,23 @@ def valid_capture_response
     "account" => "41XXXXXXXXXX4113"
   }
 end
+
+def valid_settlestat_response
+  [
+    {
+      "txns" => [
+        {
+          "setlstat" => "N",
+          "retref" => "179001161341"
+        },
+        {
+          "setlstat" => "Y",
+          "retref" => "179002161341"
+        }
+      ],
+      "batchid" => "71742042",
+      "hoststat" => "GB",
+      "hostbatch" => "71742041"
+    }
+  ]
+end

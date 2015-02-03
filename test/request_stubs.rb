@@ -59,3 +59,10 @@ def valid_capture_request
     "ponumber" => "PO-0736332"
   }
 end
+
+def valid_settlestat_request
+  {
+      "merchid" => "000000927996",
+      "date" => "0110"
+  }
+end
