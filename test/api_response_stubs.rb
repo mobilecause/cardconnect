@@ -26,6 +26,23 @@ def valid_capture_response
   }
 end
 
+def valid_inquire_response
+  {
+    "amount" => "596.00",
+    "resptext" => "Approval",
+    "setlstat" => "NOTCAPTURED",
+    "authcode" => "PPS272",
+    "respcode" => "00",
+    "retref" => "288015190411",
+    "merchid" => "000000927996",
+    "cvvresp" => "M",
+    "account" => "41XXXXXXXXXX4113",
+    "avsresp" => "Z",
+    "respproc" => "FNOR",
+    "respstat" => "A"
+  }
+end
+
 def valid_settlestat_response
   [
     {

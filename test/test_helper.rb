@@ -2,8 +2,8 @@ require 'cardconnect'
 
 require 'minitest/autorun'
 
-require 'request_stubs'
-require 'response_stubs'
+require 'api_request_stubs'
+require 'api_response_stubs'
 
 include CardConnect
 include Utils

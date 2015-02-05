@@ -85,6 +85,22 @@ namespace :cardconnect do
     puts response.body
   end
 
+  desc "Simulate an Inquire request"
+  task :inquire, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+    cardconnect_configure(args)
+
+    inquire_params = {
+      'merchid' => CardConnect.configuration.merchant_id,
+      'retref' => args[:retref]
+    }
+
+    inquire = CardConnect.inquire_service
+    inquire.build_request(inquire_params)
+    response = inquire.submit
+
+    puts response.body
+  end
+
   desc "Simulate a Settlement Status request"
   task :settle_status, [:date, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
     # Date format is MMDD

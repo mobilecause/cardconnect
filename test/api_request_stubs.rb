@@ -60,6 +60,13 @@ def valid_capture_request
   }
 end
 
+def valid_inquire_request
+  {
+      'retref' => '288002073633',
+      'merchid' => '000000927996'
+  }
+end
+
 def valid_settlestat_request
   {
       "merchid" => "000000927996",

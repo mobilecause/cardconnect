@@ -10,11 +10,13 @@ require 'cardconnect/services/authorization/authorization_response'
 require 'cardconnect/services/capture/capture_request'
 require 'cardconnect/services/capture/capture_response'
 require 'cardconnect/services/settlement_status/settlement_status_response'
+require 'cardconnect/services/inquire/inquire_response'
 
 require 'cardconnect/services/service'
 require 'cardconnect/services/authorization/authorization'
 require 'cardconnect/services/capture/capture'
 require 'cardconnect/services/settlement_status/settlement_status'
+require 'cardconnect/services/inquire/inquire'
 
 module CardConnect
 
@@ -42,6 +44,10 @@ module CardConnect
 
     def settlement_status_service
       @settlement_status_service ||= Service::SettlementStatus.new
+    end
+
+    def inquire_service
+      @inquire_service ||= Service::Inquire.new
     end
 
   end
