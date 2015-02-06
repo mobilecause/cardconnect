@@ -1,6 +1,7 @@
 require 'cardconnect'
 
 require 'minitest/autorun'
+require 'minitest/pride'
 
 require 'api_request_stubs'
 require 'api_response_stubs'
