@@ -29,15 +29,15 @@ describe Service::Inquire do
     it 'creates a Capture request object with the passed in params' do
       @service.build_request(@valid_params)
 
-      @service.request.must_be_kind_of String
-      @service.request.must_include "/288002073633"
-      @service.request.must_include "/000000927996"
+      @service.request.must_be_kind_of InquireRequest
+      @service.request.retref.must_equal "288002073633"
+      @service.request.merchid.must_equal "000000927996"
     end
 
     it 'uses default merchant ID if merchid is not passed in' do
       @service.build_request(@valid_params.reject!{|k,v| k == 'merchid' })
-      @service.request.must_be_kind_of String
-      @service.request.must_include "/merchant123"
+      @service.request.must_be_kind_of InquireRequest
+      @service.request.merchid.must_equal "merchant123"
     end
   end
 
