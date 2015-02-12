@@ -1,11 +1,11 @@
 require 'test_helper'
 
-describe Service::Authorization do
+describe CardConnect::Service::Authorization do
   before do
-    @connection = Connection.new.connection do |stubs|
+    @connection = CardConnect::Connection.new.connection do |stubs|
       stubs.put(@service.path) { [200, {}, valid_auth_response] }
     end
-    @service = Service::Authorization.new(@connection)
+    @service = CardConnect::Service::Authorization.new(@connection)
   end
 
   after do
@@ -33,7 +33,7 @@ describe Service::Authorization do
     it 'creates an Authorization request object with the right params' do
       @service.build_request(@valid_params)
 
-      @service.request.must_be_kind_of AuthorizationRequest
+      @service.request.must_be_kind_of CardConnect::Service::AuthorizationRequest
 
       @service.request.merchid.must_equal '000000927996'
       @service.request.account.must_equal '4111111111111111'
@@ -52,7 +52,7 @@ describe Service::Authorization do
     it 'creates a response when a valid request is processed' do
       @service.build_request(valid_auth_request)
       @service.submit
-      @service.response.must_be_kind_of AuthorizationResponse
+      @service.response.must_be_kind_of CardConnect::Service::AuthorizationResponse
     end
   end
 

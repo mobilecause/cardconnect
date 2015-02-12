@@ -1,8 +1,8 @@
 require 'test_helper'
 
-describe Configuration do
+describe CardConnect::Configuration do
   before do
-    @config = Configuration.new
+    @config = CardConnect::Configuration.new
   end
 
   after do

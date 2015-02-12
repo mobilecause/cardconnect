@@ -1,8 +1,8 @@
 require 'test_helper'
 
-describe AuthorizationResponse do
+describe CardConnect::Service::AuthorizationResponse do
   before do
-    @response = AuthorizationResponse.new(valid_auth_response)
+    @response = CardConnect::Service::AuthorizationResponse.new(valid_auth_response)
     @valid_payload = symbolize_keys(valid_auth_response)
   end
 

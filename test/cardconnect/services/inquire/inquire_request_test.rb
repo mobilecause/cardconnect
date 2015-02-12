@@ -1,8 +1,8 @@
 require 'test_helper'
 
-describe InquireRequest do
+describe CardConnect::Service::InquireRequest do
   before do
-    @request = InquireRequest.new(valid_inquire_request)
+    @request = CardConnect::Service::InquireRequest.new(valid_inquire_request)
     @valid_payload = symbolize_keys(valid_inquire_request)
   end
 
@@ -23,18 +23,18 @@ describe InquireRequest do
 
   describe '#valid?' do
     it 'should not be valid if no attributes are passed in' do
-      InquireRequest.new.valid?.must_equal false
+      CardConnect::Service::InquireRequest.new.valid?.must_equal false
     end
 
     it 'should be valid if valid attributes are passed in' do
-      InquireRequest.new(valid_inquire_request).valid?.must_equal true
+      CardConnect::Service::InquireRequest.new(valid_inquire_request).valid?.must_equal true
     end
   end
 
   describe '#errors' do
-    InquireRequest::REQUIRED_FIELDS.each do |field|
+    CardConnect::Service::InquireRequest::REQUIRED_FIELDS.each do |field|
       it "should have an error message if #{field} is missing" do
-        InquireRequest.new.errors.must_include "#{field} is missing"
+        CardConnect::Service::InquireRequest.new.errors.must_include "#{field} is missing"
       end
     end
   end

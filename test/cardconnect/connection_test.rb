@@ -1,8 +1,8 @@
 require 'test_helper'
 
-describe Connection do
+describe CardConnect::Connection do
   before do
-    @connection = Connection.new.connection
+    @connection = CardConnect::Connection.new.connection
   end
 
   after do

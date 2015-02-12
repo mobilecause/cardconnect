@@ -7,7 +7,7 @@ describe CardConnect do
 
   describe 'configuration' do
     it 'must return instance of Configuration' do
-      CardConnect.configuration.must_be_kind_of Configuration
+      CardConnect.configuration.must_be_kind_of CardConnect::Configuration
     end
   end
 

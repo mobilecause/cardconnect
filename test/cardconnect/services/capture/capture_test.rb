@@ -1,11 +1,11 @@
 require 'test_helper'
 
-describe Service::Capture do
+describe CardConnect::Service::Capture do
   before do
-    @connection = Connection.new.connection do |stubs|
+    @connection = CardConnect::Connection.new.connection do |stubs|
       stubs.put(@service.path) { [200, {}, valid_capture_response] }
     end
-    @service = Service::Capture.new(@connection)
+    @service = CardConnect::Service::Capture.new(@connection)
   end
 
   after do
@@ -28,7 +28,7 @@ describe Service::Capture do
     it 'creates a Capture request object with the passed in params' do
       @service.build_request(@valid_params)
 
-      @service.request.must_be_kind_of CaptureRequest
+      @service.request.must_be_kind_of CardConnect::Service::CaptureRequest
 
       @service.request.merchid.must_equal '000000927996'
       @service.request.retref.must_equal '288002073633'
@@ -37,7 +37,7 @@ describe Service::Capture do
     it 'uses default merchant ID if merchid is not passed in' do
       @service.build_request(@valid_params.reject!{|k,v| k == 'merchid' })
 
-      @service.request.must_be_kind_of CaptureRequest
+      @service.request.must_be_kind_of CardConnect::Service::CaptureRequest
 
       @service.request.merchid.must_equal 'merchant123'
     end
@@ -52,7 +52,7 @@ describe Service::Capture do
     it 'creates a response when a valid request is processed' do
       @service.build_request(valid_capture_request)
       @service.submit
-      @service.response.must_be_kind_of CaptureResponse
+      @service.response.must_be_kind_of CardConnect::Service::CaptureResponse
     end
   end
 end

@@ -1,8 +1,8 @@
 require 'test_helper'
 
-describe CaptureResponse do
+describe CardConnect::Service::CaptureResponse do
   before do
-    @response = CaptureResponse.new(valid_capture_response)
+    @response = CardConnect::Service::CaptureResponse.new(valid_capture_response)
     @valid_payload = symbolize_keys(valid_capture_response)
   end
 

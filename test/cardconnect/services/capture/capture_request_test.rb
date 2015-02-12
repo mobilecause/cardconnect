@@ -1,8 +1,8 @@
 require 'test_helper'
 
-describe CaptureRequest do
+describe CardConnect::Service::CaptureRequest do
   before do
-    @request = CaptureRequest.new(valid_capture_request)
+    @request = CardConnect::Service::CaptureRequest.new(valid_capture_request)
     @valid_payload = symbolize_keys(valid_capture_request)
   end
 
@@ -35,18 +35,18 @@ describe CaptureRequest do
 
   describe '#valid?' do
     it 'should not be valid if no attributes are passed in' do
-      CaptureRequest.new.valid?.must_equal false
+      CardConnect::Service::CaptureRequest.new.valid?.must_equal false
     end
 
     it 'should be valid if valid attributes are passed in' do
-      CaptureRequest.new(valid_capture_request).valid?.must_equal true
+      CardConnect::Service::CaptureRequest.new(valid_capture_request).valid?.must_equal true
     end
   end
 
   describe '#errors' do
-    CaptureRequest::REQUIRED_FIELDS.each do |field|
+    CardConnect::Service::CaptureRequest::REQUIRED_FIELDS.each do |field|
       it "should have an error message if #{field} is missing" do
-        CaptureRequest.new.errors.must_include "#{field} is missing"
+        CardConnect::Service::CaptureRequest.new.errors.must_include "#{field} is missing"
       end
     end
   end

@@ -1,8 +1,8 @@
 require 'test_helper'
 
-describe SettlementStatusResponse do
+describe CardConnect::Service::SettlementStatusResponse do
   before do
-    @response = SettlementStatusResponse.new(valid_settlestat_response)
+    @response = CardConnect::Service::SettlementStatusResponse.new(valid_settlestat_response)
     @valid_payload = symbolize_keys(valid_settlestat_response.first)
     @valid_payload[:txns] = @valid_payload[:txns].map{|txn| symbolize_keys(txn)}
   end

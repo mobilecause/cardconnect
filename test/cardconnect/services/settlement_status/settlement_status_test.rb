@@ -1,11 +1,11 @@
 require 'test_helper'
 
-describe Service::SettlementStatus do
+describe CardConnect::Service::SettlementStatus do
   before do
-    @connection = Connection.new.connection do |stubs|
+    @connection = CardConnect::Connection.new.connection do |stubs|
       stubs.get(@service.path) { [200, {}, valid_settlestat_response] }
     end
-    @service = Service::SettlementStatus.new(@connection)
+    @service = CardConnect::Service::SettlementStatus.new(@connection)
   end
 
   after do
@@ -28,14 +28,14 @@ describe Service::SettlementStatus do
     it 'creates a Capture request object with the passed in params' do
       @service.build_request(@valid_params)
 
-      @service.request.must_be_kind_of SettlementStatusRequest
+      @service.request.must_be_kind_of CardConnect::Service::SettlementStatusRequest
       @service.request.merchid.must_equal "000000927996"
       @service.request.date.must_equal "0110"
     end
 
     it 'uses default merchant ID if merchid is not passed in' do
       @service.build_request(@valid_params.reject!{|k,v| k == 'merchid' })
-      @service.request.must_be_kind_of SettlementStatusRequest
+      @service.request.must_be_kind_of CardConnect::Service::SettlementStatusRequest
       @service.request.merchid.must_equal "merchant123"
     end
   end
@@ -49,7 +49,7 @@ describe Service::SettlementStatus do
     it 'creates a response when a valid request is processed' do
       @service.build_request(valid_settlestat_request)
       @service.submit
-      @service.response.must_be_kind_of SettlementStatusResponse
+      @service.response.must_be_kind_of CardConnect::Service::SettlementStatusResponse
     end
   end
 end

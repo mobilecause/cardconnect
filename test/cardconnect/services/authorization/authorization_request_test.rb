@@ -1,8 +1,8 @@
 require 'test_helper'
 
-describe AuthorizationRequest do
+describe CardConnect::Service::AuthorizationRequest do
   before do
-    @request = AuthorizationRequest.new(valid_auth_request)
+    @request = CardConnect::Service::AuthorizationRequest.new(valid_auth_request)
     @valid_payload = symbolize_keys(valid_auth_request)
   end
 
@@ -98,18 +98,18 @@ describe AuthorizationRequest do
 
   describe '#valid?' do
     it 'should not be valid if no attributes are passed in' do
-      AuthorizationRequest.new.valid?.must_equal false
+      CardConnect::Service::AuthorizationRequest.new.valid?.must_equal false
     end
 
     it 'should be valid if valid attributes are passed in' do
-      AuthorizationRequest.new(valid_auth_request).valid?.must_equal true
+      CardConnect::Service::AuthorizationRequest.new(valid_auth_request).valid?.must_equal true
     end
   end
 
   describe '#errors' do
-    AuthorizationRequest::REQUIRED_FIELDS.each do |field|
+    CardConnect::Service::AuthorizationRequest::REQUIRED_FIELDS.each do |field|
       it "should have an error message if #{field} is missing" do
-        AuthorizationRequest.new.errors.must_include "#{field} is missing"
+        CardConnect::Service::AuthorizationRequest.new.errors.must_include "#{field} is missing"
       end
     end
   end

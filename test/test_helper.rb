@@ -6,8 +6,8 @@ require 'minitest/pride'
 require 'api_request_stubs'
 require 'api_response_stubs'
 
-include CardConnect
-include Utils
+# include CardConnect
+include CardConnect::Utils
 
 CardConnect.configure do |config|
   config.merchant_id = "merchant123"
@@ -17,7 +17,7 @@ CardConnect.configure do |config|
 end
 
 # Stub out the Faraday connection for testing.
-class Connection
+class CardConnect::Connection
   def connection
     @connection ||= Faraday.new(url: @config.endpoint, headers: @headers) do |faraday|
       faraday.request :basic_auth, @config.api_username, @config.api_password

@@ -1,8 +1,8 @@
 require 'test_helper'
 
-describe InquireResponse do
+describe CardConnect::Service::InquireResponse do
   before do
-    @response = InquireResponse.new(valid_inquire_response)
+    @response = CardConnect::Service::InquireResponse.new(valid_inquire_response)
     @valid_payload = symbolize_keys(valid_inquire_response)
   end
 
