@@ -41,7 +41,7 @@ namespace :cardconnect do
         "tokenize" => "Y"
     }
 
-    auth = CardConnect.authorization_service
+    auth = CardConnect::Service::Authorization.new
     auth.build_request(auth_params)
     response = auth.submit
 
@@ -62,7 +62,7 @@ namespace :cardconnect do
         "capture" => "Y"
     }
 
-    auth = CardConnect.authorization_service
+    auth = CardConnect::Service::Authorization.new
     auth.build_request(auth_params)
     response = auth.submit
 
@@ -78,7 +78,7 @@ namespace :cardconnect do
         'retref' => args.retref
     }
 
-    capture = CardConnect.capture_service
+    capture = CardConnect::Service::Capture.new
     capture.build_request(capture_params)
     response = capture.submit
 
@@ -94,7 +94,7 @@ namespace :cardconnect do
       'retref' => args[:retref]
     }
 
-    inquire = CardConnect.inquire_service
+    inquire = CardConnect::Service::Inquire.new
     inquire.build_request(inquire_params)
     response = inquire.submit
 
@@ -111,7 +111,7 @@ namespace :cardconnect do
         'date' => args[:date]
     }
 
-    status = CardConnect.settlement_status_service
+    status = CardConnect::Service::SettlementStatus.new
     status.build_request(settle_params)
     response = status.submit
 

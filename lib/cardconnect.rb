@@ -36,21 +36,5 @@ module CardConnect
       @connection ||= Connection.new.connection
     end
 
-    def authorization_service
-      @authorization_service ||= Service::Authorization.new
-    end
-
-    def capture_service
-      @capture_service ||= Service::Capture.new
-    end
-
-    def settlement_status_service
-      @settlement_status_service ||= Service::SettlementStatus.new
-    end
-
-    def inquire_service
-      @inquire_service ||= Service::Inquire.new
-    end
-
   end
 end
