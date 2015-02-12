@@ -6,7 +6,6 @@ require 'minitest/pride'
 require 'api_request_stubs'
 require 'api_response_stubs'
 
-# include CardConnect
 include CardConnect::Utils
 
 CardConnect.configure do |config|
