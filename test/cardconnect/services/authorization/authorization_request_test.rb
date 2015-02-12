@@ -96,6 +96,24 @@ describe AuthorizationRequest do
     end
   end
 
+  describe '#valid?' do
+    it 'should not be valid if no attributes are passed in' do
+      AuthorizationRequest.new.valid?.must_equal false
+    end
+
+    it 'should be valid if valid attributes are passed in' do
+      AuthorizationRequest.new(valid_auth_request).valid?.must_equal true
+    end
+  end
+
+  describe '#errors' do
+    AuthorizationRequest::REQUIRED_FIELDS.each do |field|
+      it "should have an error message if #{field} is missing" do
+        AuthorizationRequest.new.errors.must_include "#{field} is missing"
+      end
+    end
+  end
+
   describe '#payload' do
     it 'should generate hash with all the right values' do
       @request.payload.keys.each do |k|
