@@ -3,8 +3,6 @@ module CardConnect
     class CaptureResponse
       include Utils
 
-      attr_reader :errors
-
       FIELDS = [:merchid, :account, :amount, :retref, :setlstat]
 
       attr_accessor *FIELDS
@@ -19,11 +17,6 @@ module CardConnect
 
       def initialize(response)
         set_attributes(response, FIELDS)
-        @errors = []
-      end
-
-      def success?
-        @errors.empty?
       end
 
       def body
