@@ -65,6 +65,28 @@ describe CardConnect::Service::AuthorizationResponse do
     end
   end
 
+  describe '#success?' do
+    it 'should be true when there are no errors' do
+      @response.success?.must_equal true
+    end
+
+    it 'should be false when there are errors' do
+      response = CardConnect::Service::AuthorizationResponse.new(valid_auth_response.merge!("respstat" => "B", "resptext" => "this is an error"))
+      response.success?.must_equal false
+    end
+  end
+
+  describe '#errors' do
+    it 'should be empty when there are no errors' do
+      @response.errors.must_be_empty
+    end
+
+    it 'should be an array of error messages when there are errors' do
+      response = CardConnect::Service::AuthorizationResponse.new(valid_auth_response.merge!("respstat" => "B", "resptext" => "this is an error"))
+      response.errors.must_equal ["this is an error"]
+    end
+  end
+
   describe "#body" do
     it 'should generate hash with all the right values' do
       @response.body.keys.each do |k|
