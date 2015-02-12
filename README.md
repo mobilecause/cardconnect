@@ -33,6 +33,58 @@ CardConnect.configure do |config|
 end
 ```
 
+## Services
+
+### Authorization Service
+
+CardConnect documentation on this service can be found here: http://developer.cardconnect.com/cardconnect-api/#authorization-service
+
+Example:
+
+```ruby
+service = CardConnect::Service::Authorization.new
+service.build_request(params)
+response = service.submit
+```
+
+### Capture Service
+
+CardConnect documentation on this service can be found here: http://developer.cardconnect.com/cardconnect-api/#capture-service
+
+Example:
+
+```ruby
+service = CardConnect::Service::Capture.new
+service.build_request(params)
+response = service.submit
+```
+
+### Inquire Service
+
+CardConnect documentation on this service can be found here: http://developer.cardconnect.com/cardconnect-api/#inquire-service
+
+Example:
+
+```ruby
+service = CardConnect::Service::Inquire.new
+service.build_request(params)
+response = service.submit
+```
+
+### Settlement Status Service
+
+CardConnect documentation on this service can be found here: http://developer.cardconnect.com/cardconnect-api/#settlement-status-service
+
+Example:
+
+```ruby
+service = CardConnect::Service::SettlementStatus.new
+service.build_request(params)
+response = service.submit
+```
+
+
+
 ## Contributing
 
 1. Fork it ( https://github.com/mobilecause/cardconnect/fork )
