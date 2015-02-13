@@ -37,14 +37,6 @@ module CardConnect
         '/cardconnect/rest'
       end
 
-      def request_class
-        Object.const_get("#{self.class}Request")
-      end
-
-      def response_class
-        Object.const_get("#{self.class}Response")
-      end
-
       def get
         begin
           response_class.new(connection.get(path + request.payload).body)
@@ -61,6 +53,17 @@ module CardConnect
         end
       end
 
+      def request_class
+        string_to_class("#{self.class}Request")
+      end
+
+      def response_class
+        string_to_class("#{self.class}Response")
+      end
+
+      def string_to_class(str)
+        str.split('::').inject(Object) { |mod, class_name| mod.const_get(class_name) }
+      end
     end
   end
 end
