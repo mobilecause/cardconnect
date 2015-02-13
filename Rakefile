@@ -43,9 +43,13 @@ namespace :cardconnect do
 
     auth = CardConnect::Service::Authorization.new
     auth.build_request(auth_params)
-    response = auth.submit
 
-    puts response.body
+    if auth.request.valid?
+      response = auth.submit
+      puts response.body
+    else
+      puts auth.request.errors
+    end
   end
 
   desc "Simulate an Authorization Capture request"
@@ -64,9 +68,13 @@ namespace :cardconnect do
 
     auth = CardConnect::Service::Authorization.new
     auth.build_request(auth_params)
-    response = auth.submit
 
-    puts response.body
+    if auth.request.valid?
+      response = auth.submit
+      puts response.body
+    else
+      puts auth.request.errors
+    end
   end
 
   desc "Simulate a Capture request"
@@ -80,9 +88,13 @@ namespace :cardconnect do
 
     capture = CardConnect::Service::Capture.new
     capture.build_request(capture_params)
-    response = capture.submit
 
-    puts response.body
+    if capture.request.valid?
+      response = capture.submit
+      puts response.body
+    else
+      puts capture.request.errors
+    end
   end
 
   desc "Simulate an Inquire request"
@@ -90,15 +102,19 @@ namespace :cardconnect do
     cardconnect_configure(args)
 
     inquire_params = {
-      'merchid' => CardConnect.configuration.merchant_id,
-      'retref' => args[:retref]
+        'merchid' => CardConnect.configuration.merchant_id,
+        'retref' => args[:retref]
     }
 
     inquire = CardConnect::Service::Inquire.new
     inquire.build_request(inquire_params)
-    response = inquire.submit
 
-    puts response.body
+    if inquire.request.valid?
+      response = inquire.submit
+      puts response.body
+    else
+      puts inquire.request.errors
+    end
   end
 
   desc "Simulate a Settlement Status request"
@@ -113,9 +129,13 @@ namespace :cardconnect do
 
     status = CardConnect::Service::SettlementStatus.new
     status.build_request(settle_params)
-    response = status.submit
 
-    puts response.body
+    if status.request.valid?
+      response = status.submit
+      puts response.body
+    else
+      puts status.request.errors
+    end
   end
 
 end
