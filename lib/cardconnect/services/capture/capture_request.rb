@@ -41,7 +41,7 @@ module CardConnect
       def validate_required_fields
         REQUIRED_FIELDS.each do |field|
           value = send(field)
-          value.nil? || value.empty? ? errors.push("#{field} is missing") : next
+          value.nil? || value.empty? ? errors.push("#{field.capitalize} is missing") : next
         end
       end
 

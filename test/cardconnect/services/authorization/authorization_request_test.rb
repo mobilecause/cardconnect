@@ -109,7 +109,7 @@ describe CardConnect::Service::AuthorizationRequest do
   describe '#errors' do
     CardConnect::Service::AuthorizationRequest::REQUIRED_FIELDS.each do |field|
       it "should have an error message if #{field} is missing" do
-        CardConnect::Service::AuthorizationRequest.new.errors.must_include "#{field} is missing"
+        CardConnect::Service::AuthorizationRequest.new.errors.must_include "#{field.to_s.capitalize} is missing"
       end
     end
   end

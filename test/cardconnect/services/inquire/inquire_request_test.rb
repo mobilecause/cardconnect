@@ -34,7 +34,7 @@ describe CardConnect::Service::InquireRequest do
   describe '#errors' do
     CardConnect::Service::InquireRequest::REQUIRED_FIELDS.each do |field|
       it "should have an error message if #{field} is missing" do
-        CardConnect::Service::InquireRequest.new.errors.must_include "#{field} is missing"
+        CardConnect::Service::InquireRequest.new.errors.must_include "#{field.to_s.capitalize} is missing"
       end
     end
   end
