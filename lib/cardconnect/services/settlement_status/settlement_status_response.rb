@@ -17,7 +17,8 @@ module CardConnect
       BB = "BB" # Rejected by the Processor
 
       def initialize(response)
-        set_attributes(response.first, FIELDS)
+        response = response.empty? ? response : response.first
+        set_attributes(response, FIELDS)
         parse_transactions
         @errors = []
       end
