@@ -10,7 +10,7 @@ module CardConnect
     end
 
     def connection
-      @connection ||= Faraday.new(url: @config.endpoint, headers: @headers) do |faraday|
+      @connection ||= Faraday.new(url: @config.endpoint, headers: @headers, :ssl => {:verify => false}) do |faraday|
         faraday.request :basic_auth, @config.api_username, @config.api_password
         faraday.request :json
 
