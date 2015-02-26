@@ -5,7 +5,7 @@ module CardConnect
 
       REQUIRED_FIELDS = [:merchid, :retref]
 
-      OPTIONAL_FIELDS = [:authcode, :amount, :invoiceid]
+      OPTIONAL_FIELDS = [:authcode, :amount, :invoiceid, :ponumber, :taxamnt]
 
       FIELDS = REQUIRED_FIELDS + OPTIONAL_FIELDS
 

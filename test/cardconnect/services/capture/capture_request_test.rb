@@ -31,6 +31,14 @@ describe CardConnect::Service::CaptureRequest do
     it 'should have invoice id' do
       @request.invoiceid.must_equal @valid_payload[:invoiceid]
     end
+
+    it 'should have PO number' do
+      @request.ponumber.must_equal @valid_payload[:ponumber]
+    end
+
+    it 'should have tax amount' do
+      @request.taxamnt.must_equal @valid_payload[:taxamnt]
+    end
   end
 
   describe '#valid?' do
