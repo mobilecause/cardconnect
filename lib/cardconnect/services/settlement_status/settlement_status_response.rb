@@ -3,18 +3,10 @@ module CardConnect
     class SettlementStatusResponse
       include Utils
 
-      attr_reader :errors
-
       FIELDS = [:merchid, :batchid, :hoststat, :hostbatch, :respproc, :txns]
 
       attr_accessor *FIELDS
-
-      # Settlement Status
-      # appears in hoststat field
-      BLANK = "Blank" # Queued for the Processor
-      GB = "GB" # Accepted by the Processor
-      MB = "MB" # Some Txns Accepted/Some Rejected
-      BB = "BB" # Rejected by the Processor
+      attr_reader :errors
 
       def initialize(response)
         response = response.empty? ? response : response.first
@@ -24,7 +16,7 @@ module CardConnect
       end
 
       def success?
-        @errors.empty?
+        errors.empty?
       end
 
       def body

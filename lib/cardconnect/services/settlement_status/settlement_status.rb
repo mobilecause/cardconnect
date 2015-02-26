@@ -2,7 +2,7 @@ module CardConnect
   module Service
     class SettlementStatus < ServiceEndpoint
 
-      # Initializes a Settlement Service Service
+      # Initializes a Settlement Status Service
       #
       # @param connection [CardConnect::Connection]
       # @return CardConnect::Service::SettlementStatus
