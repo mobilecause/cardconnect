@@ -13,12 +13,15 @@ require 'cardconnect/services/settlement_status/settlement_status_request'
 require 'cardconnect/services/settlement_status/settlement_status_response'
 require 'cardconnect/services/inquire/inquire_request'
 require 'cardconnect/services/inquire/inquire_response'
+require 'cardconnect/services/refund/refund_request'
+require 'cardconnect/services/refund/refund_response'
 
 require 'cardconnect/services/service_endpoint'
 require 'cardconnect/services/authorization/authorization'
 require 'cardconnect/services/capture/capture'
 require 'cardconnect/services/settlement_status/settlement_status'
 require 'cardconnect/services/inquire/inquire'
+require 'cardconnect/services/refund/refund'
 
 module CardConnect
 

@@ -62,3 +62,19 @@ def valid_settlestat_response
     }
   ]
 end
+
+def valid_refund_response
+  {
+      "amount" => "59.60",
+      "resptext" => "Approval",
+      "authcode" => "REFUND",
+      "respcode" => "00",
+      "retref" => "288010185242",
+      "merchid" => "000000927996",
+      "cvvresp" => "M",
+      "account" => "41XXXXXXXXXX4113",
+      "avsresp" => "Z",
+      "respproc" => "PPS",
+      "respstat" => "A"
+  }
+end

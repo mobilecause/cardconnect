@@ -73,3 +73,11 @@ def valid_settlestat_request
       "date" => "0110"
   }
 end
+
+def valid_refund_request
+  {
+      "retref" => "288009185241",
+      "merchid" => "000000927996",
+      "amount" => "59.60"
+  }
+end
