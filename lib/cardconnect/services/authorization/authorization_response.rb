@@ -20,7 +20,7 @@ module CardConnect
       end
 
       def success?
-        @errors.empty?
+        errors.empty?
       end
 
       def body
