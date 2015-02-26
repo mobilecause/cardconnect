@@ -91,3 +91,7 @@ def valid_refund_request
       "amount" => "59.60"
   }
 end
+
+def valid_deposit_request
+  valid_settlestat_request
+end

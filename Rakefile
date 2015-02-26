@@ -157,4 +157,25 @@ namespace :cardconnect do
     end
   end
 
+  desc "Simulate a Deposit request"
+  task :deposit, [:date, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+    # Date format is MMDD
+    cardconnect_configure(args)
+
+    deposit_params = {
+        'merchid' => CardConnect.configuration.merchant_id,
+        'date' => args[:date]
+    }
+
+    deposit = CardConnect::Service::Deposit.new
+    deposit.build_request(deposit_params)
+
+    if deposit.request.valid?
+      response = deposit.submit
+      puts response.body
+    else
+      puts deposit.request.errors
+    end
+  end
+
 end
