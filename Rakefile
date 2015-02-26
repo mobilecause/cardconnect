@@ -17,7 +17,6 @@ namespace :cardconnect do
       config.api_password = args.api_password
       config.endpoint = args.api_endpoint
     end
-
   end
 
   desc "Ping the API Server"
@@ -94,6 +93,26 @@ namespace :cardconnect do
       puts response.body
     else
       puts capture.request.errors
+    end
+  end
+
+  desc "Simulate a Refund request"
+  task :refund, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+    cardconnect_configure(args)
+
+    refund_params = {
+        'merchid' => CardConnect.configuration.merchant_id,
+        'retref' => args[:retref]
+    }
+
+    refund = CardConnect::Service::Refund.new
+    refund.build_request(refund_params)
+
+    if refund.request.valid?
+      response = refund.submit
+      puts response.body
+    else
+      puts refund.request.errors
     end
   end
 

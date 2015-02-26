@@ -59,6 +59,18 @@ service.build_request(params)
 response = service.submit
 ```
 
+### Refund Service
+
+CardConnect documentation on this service can be found here: http://developer.cardconnect.com/cardconnect-api/#refund-service
+
+Example:
+
+```ruby
+service = CardConnect::Service::Refund.new
+service.build_request(params)
+response = service.submit
+```
+
 ### Inquire Service
 
 CardConnect documentation on this service can be found here: http://developer.cardconnect.com/cardconnect-api/#inquire-service
