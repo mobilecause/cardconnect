@@ -94,6 +94,26 @@ describe CardConnect::Service::AuthorizationRequest do
     it 'should have capture' do
       @request.capture.must_equal @valid_payload[:capture]
     end
+
+    it 'should have ssnl4 field' do
+      @request.ssnl4.must_equal @valid_payload[:ssnl4]
+    end
+
+    it 'should have license field' do
+      @request.license.must_equal @valid_payload[:license]
+    end
+
+    it 'should have profile field' do
+      @request.profile.must_equal @valid_payload[:profile]
+    end
+
+    describe "userfields" do
+      it 'should be an array of name-value pairs' do
+        @request.userfields.must_be_kind_of Array
+        @request.userfields.first.must_be_kind_of Hash
+        @request.userfields.first['name0'].must_equal 'value0'
+      end
+    end
   end
 
   describe '#valid?' do

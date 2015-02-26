@@ -7,7 +7,7 @@ module CardConnect
 
       OPTIONAL_FIELDS = [:accttype, :name, :address, :city, :region, :country, :phone,
                          :postal, :email, :ecomind, :cvv2, :orderid, :track, :bankaba,
-                         :tokenize, :termid, :capture]
+                         :tokenize, :termid, :capture, :ssnl4, :license, :profile, :userfields]
 
       FIELDS = REQUIRED_FIELDS + OPTIONAL_FIELDS
 
@@ -46,7 +46,6 @@ module CardConnect
           value.nil? || value.empty? ? errors.push("#{field.capitalize} is missing") : next
         end
       end
-
     end
   end
 end
