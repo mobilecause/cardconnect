@@ -28,7 +28,7 @@ namespace :cardconnect do
   end
 
   desc "Simulate an Authorization request"
-  task :auth_request, [:capture?, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+  task :authorize, [:capture?, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
     cardconnect_configure(args)
 
     auth_params = {
@@ -54,7 +54,7 @@ namespace :cardconnect do
   end
 
   desc "Simulate a Capture request"
-  task :capture_request, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+  task :capture, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
     cardconnect_configure(args)
 
     capture_params = {
