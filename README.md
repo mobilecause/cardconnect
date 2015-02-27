@@ -59,9 +59,21 @@ service.build_request(params)
 response = service.submit
 ```
 
+### Void Service
+
+CardConnect documentation for this service can be found here: http://developer.cardconnect.com/cardconnect-api/#void-service
+
+Example:
+
+```ruby
+service = CardConnect::Service::Void.new
+service.build_request(params)
+response = service.submit
+```
+
 ### Refund Service
 
-CardConnect documentation on this service can be found here: http://developer.cardconnect.com/cardconnect-api/#refund-service
+CardConnect documentation for this service can be found here: http://developer.cardconnect.com/cardconnect-api/#refund-service
 
 Example:
 

@@ -73,6 +73,26 @@ namespace :cardconnect do
     end
   end
 
+  desc "Simulate a Void request"
+  task :void, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+    cardconnect_configure(args)
+
+    void_params = {
+        'merchid' => CardConnect.configuration.merchant_id,
+        'retref' => args[:retref]
+    }
+
+    void = CardConnect::Service::Void.new
+    void.build_request(void_params)
+
+    if void.request.valid?
+      response = void.submit
+      puts response.body
+    else
+      puts void.request.errors
+    end
+  end
+
   desc "Simulate a Refund request"
   task :refund, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
     cardconnect_configure(args)

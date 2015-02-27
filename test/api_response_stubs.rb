@@ -130,3 +130,17 @@ def valid_deposit_response
       }
   ]
 end
+
+def valid_void_response
+  {
+      "amount" => "1.01",
+      "resptext" => "Approval",
+      "authcode" => "REVERS",
+      "respcode" => "00",
+      "retref" => "288013185633",
+      "merchid" => "000000927996",
+      "respproc" => "FNOR",
+      "respstat" => "A",
+      "currency" => "USD"
+  }
+end
