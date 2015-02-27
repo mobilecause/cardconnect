@@ -3,7 +3,7 @@ module CardConnect
     class RefundResponse
       include Utils
 
-      FIELDS = [:merchid, :amount, :retref, :respcode, :respproc, :respstat, :resptext]
+      FIELDS = [:merchid, :amount, :retref, :authcode, :respcode, :respproc, :respstat, :resptext]
 
       attr_accessor *FIELDS
       attr_reader :errors

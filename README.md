@@ -37,7 +37,7 @@ end
 
 ### Authorization Service
 
-CardConnect documentation on this service can be found here: http://developer.cardconnect.com/cardconnect-api/#authorization-service
+CardConnect documentation for this service can be found here: http://developer.cardconnect.com/cardconnect-api/#authorization-service
 
 Example:
 
@@ -49,7 +49,7 @@ response = service.submit
 
 ### Capture Service
 
-CardConnect documentation on this service can be found here: http://developer.cardconnect.com/cardconnect-api/#capture-service
+CardConnect documentation for this service can be found here: http://developer.cardconnect.com/cardconnect-api/#capture-service
 
 Example:
 
@@ -85,7 +85,7 @@ response = service.submit
 
 ### Inquire Service
 
-CardConnect documentation on this service can be found here: http://developer.cardconnect.com/cardconnect-api/#inquire-service
+CardConnect documentation for this service can be found here: http://developer.cardconnect.com/cardconnect-api/#inquire-service
 
 Example:
 
@@ -97,12 +97,24 @@ response = service.submit
 
 ### Settlement Status Service
 
-CardConnect documentation on this service can be found here: http://developer.cardconnect.com/cardconnect-api/#settlement-status-service
+CardConnect documentation for this service can be found here: http://developer.cardconnect.com/cardconnect-api/#settlement-status-service
 
 Example:
 
 ```ruby
 service = CardConnect::Service::SettlementStatus.new
+service.build_request(params)
+response = service.submit
+```
+
+### Deposit Service
+
+CardConnect documentation for this service can be found here: http://developer.cardconnect.com/cardconnect-api/#deposit-service
+
+Example:
+
+```ruby
+service = CardConnect::Service::Deposit.new
 service.build_request(params)
 response = service.submit
 ```

@@ -3,41 +3,39 @@ require 'test_helper'
 describe CardConnect::Service::CaptureRequest do
   before do
     @request = CardConnect::Service::CaptureRequest.new(valid_capture_request)
-    @valid_payload = symbolize_keys(valid_capture_request)
   end
 
   after do
     @request = nil
-    @valid_payload = nil
   end
 
   describe 'FIELDS' do
     it 'should have merchant id' do
-      @request.merchid.must_equal @valid_payload[:merchid]
+      @request.merchid.must_equal "000000927996"
     end
 
     it 'should have retrieval reference number' do
-      @request.retref.must_equal @valid_payload[:retref]
+      @request.retref.must_equal "288002073633"
     end
 
     it 'should have authorization code' do
-      @request.authcode.must_equal @valid_payload[:authcode]
+      @request.authcode.must_equal "046221"
     end
 
     it 'should have amount' do
-      @request.amount.must_equal @valid_payload[:amount]
+      @request.amount.must_equal "596.00"
     end
 
     it 'should have invoice id' do
-      @request.invoiceid.must_equal @valid_payload[:invoiceid]
+      @request.invoiceid.must_equal "7890"
     end
 
     it 'should have PO number' do
-      @request.ponumber.must_equal @valid_payload[:ponumber]
+      @request.ponumber.must_equal "PO-0736332"
     end
 
     it 'should have tax amount' do
-      @request.taxamnt.must_equal @valid_payload[:taxamnt]
+      @request.taxamnt.must_equal "40.00"
     end
   end
 
@@ -61,9 +59,7 @@ describe CardConnect::Service::CaptureRequest do
 
   describe "#payload" do
     it 'should generate hash with all the right values' do
-      @request.payload.keys.each do |k|
-        @request.payload[k].must_equal @valid_payload[k]
-      end
+      @request.payload.must_equal symbolize_keys(valid_capture_request)
     end
   end
 end

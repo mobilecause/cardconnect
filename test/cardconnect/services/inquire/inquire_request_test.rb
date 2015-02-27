@@ -3,21 +3,19 @@ require 'test_helper'
 describe CardConnect::Service::InquireRequest do
   before do
     @request = CardConnect::Service::InquireRequest.new(valid_inquire_request)
-    @valid_payload = symbolize_keys(valid_inquire_request)
   end
 
   after do
     @request = nil
-    @valid_payload = nil
   end
 
   describe 'FIELDS' do
     it 'should have merchant id' do
-      @request.merchid.must_equal @valid_payload[:merchid]
+      @request.merchid.must_equal "000000927996"
     end
 
     it 'should have retrieval reference number' do
-      @request.retref.must_equal @valid_payload[:retref]
+      @request.retref.must_equal "288002073633"
     end
   end
 

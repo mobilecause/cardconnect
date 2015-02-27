@@ -3,7 +3,6 @@ require 'test_helper'
 describe CardConnect::Service::RefundRequest do
   before do
     @request = CardConnect::Service::RefundRequest.new(valid_refund_request)
-    @valid_payload = symbolize_keys(valid_refund_request)
   end
 
   after do
@@ -12,15 +11,15 @@ describe CardConnect::Service::RefundRequest do
 
   describe 'FIELDS' do
     it 'should have merchant id' do
-      @request.merchid.must_equal @valid_payload[:merchid]
+      @request.merchid.must_equal "000000927996"
     end
 
     it 'should have retrieval reference number' do
-      @request.retref.must_equal @valid_payload[:retref]
+      @request.retref.must_equal "288009185241"
     end
 
     it 'should have amount' do
-      @request.amount.must_equal @valid_payload[:amount]
+      @request.amount.must_equal "59.60"
     end
   end
 
@@ -44,9 +43,7 @@ describe CardConnect::Service::RefundRequest do
 
   describe '#payload' do
     it 'should generate hash with all the right values' do
-      @request.payload.keys.each do |k|
-        @request.payload[k].must_equal @valid_payload[k]
-      end
+      @request.payload.must_equal symbolize_keys(valid_refund_request)
     end
   end
 end

@@ -11,7 +11,8 @@ def valid_auth_response
       "avsresp" => "9",
       "cvvresp" => "M",
       "authcode" => "046221",
-      "respproc" => "FNOR"
+      "respproc" => "FNOR",
+      "commcard" => "N"
   }
 end
 
@@ -30,15 +31,13 @@ def valid_inquire_response
       "amount" => "596.00",
       "resptext" => "Approval",
       "setlstat" => "NOTCAPTURED",
-      "authcode" => "PPS272",
       "respcode" => "00",
       "retref" => "288015190411",
       "merchid" => "000000927996",
-      "cvvresp" => "M",
       "account" => "41XXXXXXXXXX4113",
-      "avsresp" => "Z",
       "respproc" => "FNOR",
-      "respstat" => "A"
+      "respstat" => "A",
+      "currency" => "USD"
   }
 end
 
@@ -57,7 +56,9 @@ def valid_settlestat_response
           ],
           "batchid" => "71742042",
           "hoststat" => "GB",
-          "hostbatch" => "71742041"
+          "merchid" => "000000927996",
+          "hostbatch" => "71742041",
+          "respproc" => "FNOR"
       }
   ]
 end
@@ -70,9 +71,6 @@ def valid_refund_response
       "respcode" => "00",
       "retref" => "288010185242",
       "merchid" => "000000927996",
-      "cvvresp" => "M",
-      "account" => "41XXXXXXXXXX4113",
-      "avsresp" => "Z",
       "respproc" => "PPS",
       "respstat" => "A"
   }
@@ -81,12 +79,13 @@ end
 def valid_deposit_response
   [
       {
-          "cardtype" => "VI",
+          "accttype" => "VI",
           "postdate" => "20121009",
           "cbakamnt" => "0.00",
           "feeamnt" => "0.55",
           "currency" => "USD",
           "amount" => "11.00",
+          "respproc" => "FNOR",
           "txns" => [
               {
                   "merchbatch" => 92821429,
@@ -97,36 +96,11 @@ def valid_deposit_response
                   "depamnt" => "11.00"
               }
           ],
-          "resptext" => "",
+          "resptext" => "Successful or something",
           "depositid" => 7,
           "merchid" => "000000927996",
           "action" => "DEB",
           "actdate" => "20121008",
-          "cardproc" => "FNOR"
-      },
-      {
-          "cardtype" => "MC",
-          "postdate" => "20121009",
-          "cbakamnt" => "0.00",
-          "feeamnt" => "0.55",
-          "currency" => "USD",
-          "amount" => "11.00",
-          "txns" => [
-              {
-                  "merchbatch" => 92821429,
-                  "retref" => "282006142924",
-                  "hostbatch" => "1429",
-                  "feeamnt" => "0.00",
-                  "action" => "DEB",
-                  "depamnt" => "11.00"
-              }
-          ],
-          "resptext" => "",
-          "depositid" => 7,
-          "merchid" => "000000927996",
-          "action" => "DEB",
-          "actdate" => "20121008",
-          "cardproc" => "FNOR"
       }
   ]
 end
