@@ -2,6 +2,8 @@
 
 CardConnect API Ruby Wrapper
 
+[![Gem Version](https://badge.fury.io/rb/cardconnect.svg)](http://badge.fury.io/rb/cardconnect)
+
 ## Installation
 
 Add this line to your application's Gemfile:
