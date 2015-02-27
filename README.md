@@ -119,7 +119,29 @@ service.build_request(params)
 response = service.submit
 ```
 
+### Response Codes
 
+http://developer.cardconnect.com/cardconnect-api/#response-codes
+
+## To Do:
+
+#### Authorization Service
+
+* Support for custom descriptor fields
+* Support for Card Present authorizations is untested
+* Support 3D Secure processing
+
+#### Capture Service
+
+* Support for Level 3 data including items
+
+#### Funding Service
+
+* Funding Service needs to be implemented
+
+#### Profile Service
+
+* Profile Service needs to be implemented
 
 ## Contributing
 
