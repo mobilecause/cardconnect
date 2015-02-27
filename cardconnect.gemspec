@@ -6,11 +6,11 @@ require 'cardconnect/version'
 Gem::Specification.new do |spec|
   spec.name          = "cardconnect"
   spec.version       = CardConnect::VERSION
-  spec.authors       = ["Jason Taylor"]
-  spec.email         = ["jason@mobilecause.com"]
+  spec.authors       = ["Tim McKenzie", "Prashant Mokkarala", "Jason Taylor"]
+  spec.email         = ["tim@mobilecause.com", "prashant@mobilecause.com", "j.m.taylor1@gmail.com"]
   spec.summary       = %q{CardConnect API Ruby Wrapper}
   spec.description   = %q{CardConnect API Ruby Wrapper}
-  spec.homepage      = ""
+  spec.homepage      = "http://developer.cardconnect.com/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
