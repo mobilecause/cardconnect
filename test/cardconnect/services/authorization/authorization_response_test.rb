@@ -61,6 +61,10 @@ describe CardConnect::Service::AuthorizationResponse do
     it 'should have the Commercial Card Flag' do
       @response.commcard.must_equal "N"
     end
+
+    it 'should have the profile id' do
+      @response.profileid.must_equal "12345678"
+    end
   end
 
   describe '#success?' do

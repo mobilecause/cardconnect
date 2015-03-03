@@ -12,7 +12,8 @@ def valid_auth_response
       "cvvresp" => "M",
       "authcode" => "046221",
       "respproc" => "FNOR",
-      "commcard" => "N"
+      "commcard" => "N",
+      "profileid" => '12345678'
   }
 end
 

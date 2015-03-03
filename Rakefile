@@ -37,7 +37,9 @@ namespace :cardconnect do
         'expiry' => '1220',
         'amount' => '1000',
         'currency' => 'USD',
-        "tokenize" => "Y"
+        "tokenize" => "Y",
+        'profile' => 'Y',
+        'name' => 'Bob Johnson'
     }
 
     auth_params.merge!("capture" => "Y") if args[:capture?]
