@@ -29,6 +29,8 @@ require 'cardconnect/services/refund/refund'
 require 'cardconnect/services/deposit/deposit'
 require 'cardconnect/services/void/void'
 
+require 'cardconnect/services/profile/profile'
+
 module CardConnect
 
   class << self
