@@ -4,7 +4,7 @@ module CardConnect
       include Utils
 
       FIELDS = [:profileid, :acctid, :respstat, :account, :respcode, :resptext, :respproc, :accttype, :expiry, 
-                :name, :address, :city, :region, :country, :phone, :postal, :ssnl4, :email, :defaultacct, :license]
+                :name, :address, :city, :region, :country, :phone, :postal, :ssnl4, :email, :defaultacct, :license, :token]
 
       attr_accessor *FIELDS
       attr_reader :errors
@@ -14,7 +14,6 @@ module CardConnect
       STATUS_DECLINED = 'C'
 
       def initialize(response)
-        puts response
         set_attributes(response, FIELDS)
         @errors = []
         process_errors

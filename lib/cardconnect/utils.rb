@@ -3,6 +3,7 @@ module CardConnect
 
     def set_attributes(attributes, fields)
       return if attributes.empty?
+      attributes = attributes[0] if attributes.is_a? Array
       attributes = symbolize_keys(attributes)
       fields.each do |attr|
         next unless attributes[attr]

@@ -3,9 +3,9 @@ module CardConnect
     class GetProfileRequest
       include Utils
 
-      REQUIRED_FIELDS = []
+      REQUIRED_FIELDS = [:profileid, :acctid, :merchid]
 
-      OPTIONAL_FIELDS = [:profileid, :merchid, :acctid]
+      OPTIONAL_FIELDS = []
 
       FIELDS = REQUIRED_FIELDS + OPTIONAL_FIELDS
 
@@ -29,8 +29,10 @@ module CardConnect
 
       # Builds the request payload
       def payload
-        payload = "/16669219665105041111/1/496160873888"
-        
+        payload = ""
+        FIELDS.each do |field|
+          payload += "/#{send(field)}"
+        end
         payload
       end
 
