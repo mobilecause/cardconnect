@@ -1,6 +1,6 @@
 module CardConnect
   module Service
-    class Profile < ServiceEndpoint
+    class GetProfile < ServiceEndpoint
 
       # Initializes an Authorization Service
       #
@@ -11,7 +11,6 @@ module CardConnect
         @resource_name = '/profile'
         @rest_method = 'get'
       end
-
     end
   end
 end

@@ -1,10 +1,10 @@
 module CardConnect
   module Service
-    class AuthorizationResponse
+    class GetProfileResponse
       include Utils
 
-      FIELDS = [:respstat, :retref, :account, :token, :amount, :merchid, :respcode,
-                :resptext, :respproc, :avsresp, :cvvresp, :authcode, :commcard, :profileid, :acctid]
+      FIELDS = [:profileid, :acctid, :respstat, :account, :respcode, :resptext, :respproc, :accttype, :expiry, 
+                :name, :address, :city, :region, :country, :phone, :postal, :ssnl4, :email, :defaultacct, :license]
 
       attr_accessor *FIELDS
       attr_reader :errors
@@ -14,6 +14,7 @@ module CardConnect
       STATUS_DECLINED = 'C'
 
       def initialize(response)
+        puts response
         set_attributes(response, FIELDS)
         @errors = []
         process_errors
