@@ -13,8 +13,7 @@ def valid_auth_response
       "authcode" => "046221",
       "respproc" => "FNOR",
       "commcard" => "N",
-      "profileid" => '12345678',
-      "setlstat" => "Pending"
+      "profileid" => '12345678'
   }
 end
 

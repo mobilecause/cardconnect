@@ -28,7 +28,7 @@ namespace :cardconnect do
   end
 
   desc "Simulate an Authorization request"
-  task :authorize, [:capture?, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+  task :authorize, [:merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
     cardconnect_configure(args)
 
     auth_params = {
@@ -39,10 +39,37 @@ namespace :cardconnect do
         'currency' => 'USD',
         "tokenize" => "Y",
         'profile' => 'Y',
-        'name' => 'Bob Johnson'
+        'name' => 'Bob Johnson',
+        'capture' => 'N'
     }
 
-    auth_params.merge!("capture" => "Y") if args[:capture?]
+    auth = CardConnect::Service::Authorization.new
+    auth.build_request(auth_params)
+
+    if auth.request.valid?
+      response = auth.submit
+      puts response.body
+    else
+      puts auth.request.errors
+    end
+  end
+
+  desc 'Simulate an Authorization Capture request'
+  task :auth_capture, [:merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+    cardconnect_configure(args)
+
+    auth_params = {
+        'account' => '4111111111111111',
+        "accttype" => "VISA",
+        'expiry' => '1220',
+        'amount' => '1000',
+        'currency' => 'USD',
+        "tokenize" => "Y",
+        'profile' => 'Y',
+        'name' => 'Bob Johnson',
+        'capture' => 'Y',
+        'ponumber' => '1234'
+    }
 
     auth = CardConnect::Service::Authorization.new
     auth.build_request(auth_params)
