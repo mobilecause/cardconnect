@@ -7,7 +7,8 @@ module CardConnect
 
       OPTIONAL_FIELDS = [:accttype, :name, :address, :city, :region, :country, :phone,
                          :postal, :email, :ecomind, :cvv2, :orderid, :track, :bankaba,
-                         :tokenize, :termid, :capture, :ssnl4, :license, :profile, :userfields]
+                         :tokenize, :termid, :capture, :ssnl4, :license, :profile, :userfields,
+                         :ponumber, :authcode, :invoiceid, :taxamnt]
 
       FIELDS = REQUIRED_FIELDS + OPTIONAL_FIELDS
 
