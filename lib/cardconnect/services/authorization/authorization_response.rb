@@ -4,7 +4,7 @@ module CardConnect
       include Utils
 
       FIELDS = [:respstat, :retref, :account, :token, :amount, :merchid, :respcode,
-                :resptext, :respproc, :avsresp, :cvvresp, :authcode, :commcard, :profileid]
+                :resptext, :respproc, :avsresp, :cvvresp, :authcode, :commcard, :profileid, :setlstat]
 
       attr_accessor *FIELDS
       attr_reader :errors

@@ -106,6 +106,22 @@ describe CardConnect::Service::AuthorizationRequest do
       @request.profile.must_equal "Y"
     end
 
+    it 'should have ponumber field' do
+      @request.ponumber.must_equal "1234"
+    end
+
+    it 'should have authcode field' do
+      @request.authcode.must_equal "123456"
+    end
+
+    it 'should have invoiceid field' do
+      @request.invoiceid.must_equal "000000000001"
+    end
+
+    it 'should have taxamnt field' do
+      @request.taxamnt.must_equal "0"
+    end
+
     describe "userfields" do
       it 'should be an array of name-value pairs' do
         @request.userfields.must_be_kind_of Array

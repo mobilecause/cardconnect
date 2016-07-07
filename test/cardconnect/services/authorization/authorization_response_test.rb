@@ -65,6 +65,10 @@ describe CardConnect::Service::AuthorizationResponse do
     it 'should have the profile id' do
       @response.profileid.must_equal "12345678"
     end
+
+    it 'should have the setlstat' do
+      @response.setlstat.must_equal "Pending"
+    end
   end
 
   describe '#success?' do

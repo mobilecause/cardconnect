@@ -25,6 +25,10 @@ def valid_auth_request
       "ssnl4" => "1234",
       "license" => "CO:1231231234",
       "profile" => "Y",
+      "ponumber" => "1234",
+      "authcode" => "123456",
+      "invoiceid" => "000000000001",
+      "taxamnt" => "0",
       "userfields" => [
           {
               "name0" => "value0"
