@@ -1,7 +1,6 @@
 module CardConnect
   module Service
     class Capture < ServiceEndpoint
-
       # Initializes a Capture Service
       #
       # @param connection [CardConnect::Connection]
@@ -11,7 +10,6 @@ module CardConnect
         @resource_name = '/capture'
         @rest_method = 'put'
       end
-      
     end
   end
 end

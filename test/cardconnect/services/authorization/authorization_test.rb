@@ -26,15 +26,13 @@ describe CardConnect::Service::Authorization do
     end
 
     it 'uses the default merchant id if it is not passed in' do
-      @service.build_request(@valid_params.reject!{|k,v| k == 'merchid' })
+      @service.build_request(@valid_params.reject! { |k, _| k == 'merchid' })
       @service.request.merchid.must_equal 'merchant123'
     end
 
     it 'creates an Authorization request object with the right params' do
       @service.build_request(@valid_params)
-
       @service.request.must_be_kind_of CardConnect::Service::AuthorizationRequest
-
       @service.request.merchid.must_equal '000000927996'
       @service.request.account.must_equal '4111111111111111'
       @service.request.expiry.must_equal '1212'
@@ -55,5 +53,4 @@ describe CardConnect::Service::Authorization do
       @service.response.must_be_kind_of CardConnect::Service::AuthorizationResponse
     end
   end
-
 end

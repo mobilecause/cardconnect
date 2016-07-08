@@ -5,11 +5,11 @@ module CardConnect
     class SettlementStatusRequest
       include Utils
 
-      REQUIRED_FIELDS = [:merchid, :date]
+      REQUIRED_FIELDS = [:merchid, :date].freeze
 
       FIELDS = REQUIRED_FIELDS
 
-      attr_accessor *FIELDS
+      attr_accessor(*FIELDS)
       attr_reader :errors
 
       # Initializes a new Settlement Status Request
@@ -29,7 +29,7 @@ module CardConnect
 
       # Builds the request payload
       def payload
-        payload = "?"
+        payload = '?'
         FIELDS.each do |field|
           payload += "#{field}=#{send(field)}&"
         end
@@ -51,14 +51,11 @@ module CardConnect
       end
 
       def validate_date_format
-        begin
-          raise if date.length != 4
-          Date.parse(date, '%m%d')
-        rescue => e
-          errors.push("Date format is invalid. Please use MMDD format")
-        end
+        raise if date.length != 4
+        Date.parse(date, '%m%d')
+      rescue
+        errors.push('Date format is invalid. Please use MMDD format')
       end
-
     end
   end
 end

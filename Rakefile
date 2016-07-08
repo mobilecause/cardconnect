@@ -1,17 +1,15 @@
-require "bundler/gem_tasks"
-
+require 'bundler/gem_tasks'
 require 'rake/testtask'
+require 'cardconnect'
 
 task default: [:test]
 
 Rake::TestTask.new do |t|
   t.libs << 'test'
-  t.pattern = "test/**/*_test.rb"
+  t.pattern = 'test/**/*_test.rb'
 end
 
 namespace :cardconnect do
-  require 'cardconnect'
-
   def cardconnect_configure(args)
     CardConnect.configure do |config|
       config.merchant_id = args.merchant_id
@@ -21,28 +19,28 @@ namespace :cardconnect do
     end
   end
 
-  desc "Ping the API Server"
-  task :ping, [:merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+  desc 'Ping the API Server'
+  task :ping, [:merchant_id, :api_username, :api_password, :api_endpoint] do |_, args|
     cardconnect_configure(args)
 
     response = CardConnect::Connection.new.ping_server
     puts response.body
   end
 
-  desc "Simulate an Authorization request"
-  task :authorize, [:merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+  desc 'Simulate an Authorization request'
+  task :authorize, [:merchant_id, :api_username, :api_password, :api_endpoint] do |_, args|
     cardconnect_configure(args)
 
     auth_params = {
-        'account' => '4111111111111111',
-        "accttype" => "VISA",
-        'expiry' => '1220',
-        'amount' => '1000',
-        'currency' => 'USD',
-        "tokenize" => "Y",
-        'profile' => 'Y',
-        'name' => 'Bob Johnson',
-        'capture' => 'N'
+      'account' => '4111111111111111',
+      'accttype' => 'VISA',
+      'expiry' => '1220',
+      'amount' => '1000',
+      'currency' => 'USD',
+      'tokenize' => 'Y',
+      'profile' => 'Y',
+      'name' => 'Bob Johnson',
+      'capture' => 'N'
     }
 
     auth = CardConnect::Service::Authorization.new
@@ -57,20 +55,20 @@ namespace :cardconnect do
   end
 
   desc 'Simulate an Authorization Capture request'
-  task :auth_capture, [:merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+  task :auth_capture, [:merchant_id, :api_username, :api_password, :api_endpoint] do |_, args|
     cardconnect_configure(args)
 
     auth_params = {
-        'account' => '4111111111111111',
-        "accttype" => "VISA",
-        'expiry' => '1220',
-        'amount' => '1000',
-        'currency' => 'USD',
-        "tokenize" => "Y",
-        'profile' => 'Y',
-        'name' => 'Bob Johnson',
-        'capture' => 'Y',
-        'ponumber' => '1234'
+      'account' => '4111111111111111',
+      'accttype' => 'VISA',
+      'expiry' => '1220',
+      'amount' => '1000',
+      'currency' => 'USD',
+      'tokenize' => 'Y',
+      'profile' => 'Y',
+      'name' => 'Bob Johnson',
+      'capture' => 'Y',
+      'ponumber' => '1234'
     }
 
     auth = CardConnect::Service::Authorization.new
@@ -84,13 +82,13 @@ namespace :cardconnect do
     end
   end
 
-  desc "Simulate a Capture request"
-  task :capture, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+  desc 'Simulate a Capture request'
+  task :capture, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |_, args|
     cardconnect_configure(args)
 
     capture_params = {
-        'merchid' => CardConnect.configuration.merchant_id,
-        'retref' => args.retref
+      'merchid' => CardConnect.configuration.merchant_id,
+      'retref' => args.retref
     }
 
     capture = CardConnect::Service::Capture.new
@@ -104,13 +102,13 @@ namespace :cardconnect do
     end
   end
 
-  desc "Simulate a Void request"
-  task :void, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+  desc 'Simulate a Void request'
+  task :void, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |_, args|
     cardconnect_configure(args)
 
     void_params = {
-        'merchid' => CardConnect.configuration.merchant_id,
-        'retref' => args[:retref]
+      'merchid' => CardConnect.configuration.merchant_id,
+      'retref' => args[:retref]
     }
 
     void = CardConnect::Service::Void.new
@@ -124,13 +122,13 @@ namespace :cardconnect do
     end
   end
 
-  desc "Simulate a Refund request"
-  task :refund, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+  desc 'Simulate a Refund request'
+  task :refund, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |_, args|
     cardconnect_configure(args)
 
     refund_params = {
-        'merchid' => CardConnect.configuration.merchant_id,
-        'retref' => args[:retref]
+      'merchid' => CardConnect.configuration.merchant_id,
+      'retref' => args[:retref]
     }
 
     refund = CardConnect::Service::Refund.new
@@ -144,13 +142,13 @@ namespace :cardconnect do
     end
   end
 
-  desc "Simulate an Inquire request"
-  task :inquire, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+  desc 'Simulate an Inquire request'
+  task :inquire, [:retref, :merchant_id, :api_username, :api_password, :api_endpoint] do |_, args|
     cardconnect_configure(args)
 
     inquire_params = {
-        'merchid' => CardConnect.configuration.merchant_id,
-        'retref' => args[:retref]
+      'merchid' => CardConnect.configuration.merchant_id,
+      'retref' => args[:retref]
     }
 
     inquire = CardConnect::Service::Inquire.new
@@ -164,14 +162,14 @@ namespace :cardconnect do
     end
   end
 
-  desc "Simulate a Settlement Status request"
-  task :settle_status, [:date, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+  desc 'Simulate a Settlement Status request'
+  task :settle_status, [:date, :merchant_id, :api_username, :api_password, :api_endpoint] do |_, args|
     # Date format is MMDD
     cardconnect_configure(args)
 
     settle_params = {
-        'merchid' => CardConnect.configuration.merchant_id,
-        'date' => args[:date]
+      'merchid' => CardConnect.configuration.merchant_id,
+      'date' => args[:date]
     }
 
     status = CardConnect::Service::SettlementStatus.new
@@ -185,14 +183,14 @@ namespace :cardconnect do
     end
   end
 
-  desc "Simulate a Deposit request"
-  task :deposit, [:date, :merchant_id, :api_username, :api_password, :api_endpoint] do |t, args|
+  desc 'Simulate a Deposit request'
+  task :deposit, [:date, :merchant_id, :api_username, :api_password, :api_endpoint] do |_, args|
     # Date format is MMDD
     cardconnect_configure(args)
 
     deposit_params = {
-        'merchid' => CardConnect.configuration.merchant_id,
-        'date' => args[:date]
+      'merchid' => CardConnect.configuration.merchant_id,
+      'date' => args[:date]
     }
 
     deposit = CardConnect::Service::Deposit.new
@@ -205,5 +203,4 @@ namespace :cardconnect do
       puts deposit.request.errors
     end
   end
-
 end

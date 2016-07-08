@@ -3,9 +3,9 @@ module CardConnect
     class SettlementStatusResponse
       include Utils
 
-      FIELDS = [:merchid, :batchid, :hoststat, :hostbatch, :respproc, :txns]
+      FIELDS = [:merchid, :batchid, :hoststat, :hostbatch, :respproc, :txns].freeze
 
-      attr_accessor *FIELDS
+      attr_accessor(*FIELDS)
       attr_reader :errors
 
       def initialize(response)
@@ -22,7 +22,7 @@ module CardConnect
       def body
         body = {}
         FIELDS.each do |attr|
-          body.merge!({attr => send(attr)})
+          body.merge!(attr => send(attr))
         end
         body
       end
@@ -31,9 +31,8 @@ module CardConnect
 
       def parse_transactions
         return if txns.nil?
-        txns.each_with_index { |txn, i| self.txns[i] = symbolize_keys(txn) }
+        txns.each_with_index { |txn, i| txns[i] = symbolize_keys(txn) }
       end
-
     end
   end
 end

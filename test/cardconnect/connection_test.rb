@@ -16,7 +16,7 @@ describe CardConnect::Connection do
 
     it 'must have a URL that matches the configured endpoint' do
       @connection.url_prefix.host.must_equal URI.parse(CardConnect.configuration.endpoint).host
-      @connection.url_prefix.scheme.must_equal "https"
+      @connection.url_prefix.scheme.must_equal 'https'
     end
 
     describe 'Faraday handlers' do

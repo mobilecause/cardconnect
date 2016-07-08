@@ -11,31 +11,31 @@ describe CardConnect::Service::CaptureRequest do
 
   describe 'FIELDS' do
     it 'should have merchant id' do
-      @request.merchid.must_equal "000000927996"
+      @request.merchid.must_equal '000000927996'
     end
 
     it 'should have retrieval reference number' do
-      @request.retref.must_equal "288002073633"
+      @request.retref.must_equal '288002073633'
     end
 
     it 'should have authorization code' do
-      @request.authcode.must_equal "046221"
+      @request.authcode.must_equal '046221'
     end
 
     it 'should have amount' do
-      @request.amount.must_equal "596.00"
+      @request.amount.must_equal '596.00'
     end
 
     it 'should have invoice id' do
-      @request.invoiceid.must_equal "7890"
+      @request.invoiceid.must_equal '7890'
     end
 
     it 'should have PO number' do
-      @request.ponumber.must_equal "PO-0736332"
+      @request.ponumber.must_equal 'PO-0736332'
     end
 
     it 'should have tax amount' do
-      @request.taxamnt.must_equal "40.00"
+      @request.taxamnt.must_equal '40.00'
     end
   end
 
@@ -57,7 +57,7 @@ describe CardConnect::Service::CaptureRequest do
     end
   end
 
-  describe "#payload" do
+  describe '#payload' do
     it 'should generate hash with all the right values' do
       @request.payload.must_equal symbolize_keys(valid_capture_request)
     end

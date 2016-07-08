@@ -24,5 +24,4 @@ describe CardConnect::Configuration do
   it 'must respond to endpoint' do
     @config.must_respond_to :endpoint
   end
-
 end

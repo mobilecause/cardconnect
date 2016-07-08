@@ -3,7 +3,7 @@ require 'test_helper'
 describe CardConnect::Service::Inquire do
   before do
     @connection = CardConnect::Connection.new.connection do |stubs|
-      path = @service.path + "/#{valid_inquire_request['retref']}/#{valid_inquire_request['merchid']}"
+      path = "#{@service.path}/#{valid_inquire_request['retref']}/#{valid_inquire_request['merchid']}"
       stubs.get(path) { [200, {}, valid_inquire_response] }
     end
     @service = CardConnect::Service::Inquire.new(@connection)
@@ -30,14 +30,14 @@ describe CardConnect::Service::Inquire do
       @service.build_request(@valid_params)
 
       @service.request.must_be_kind_of CardConnect::Service::InquireRequest
-      @service.request.retref.must_equal "288002073633"
-      @service.request.merchid.must_equal "000000927996"
+      @service.request.retref.must_equal '288002073633'
+      @service.request.merchid.must_equal '000000927996'
     end
 
     it 'uses default merchant ID if merchid is not passed in' do
-      @service.build_request(@valid_params.reject!{|k,v| k == 'merchid' })
+      @service.build_request(@valid_params.reject! { |k, _| k == 'merchid' })
       @service.request.must_be_kind_of CardConnect::Service::InquireRequest
-      @service.request.merchid.must_equal "merchant123"
+      @service.request.merchid.must_equal 'merchant123'
     end
   end
 

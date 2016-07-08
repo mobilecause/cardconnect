@@ -1,7 +1,6 @@
 module CardConnect
   module Service
     class Inquire < ServiceEndpoint
-
       # Initializes a Inquire Service
       #
       # @param connection [CardConnect::Connection]
@@ -11,7 +10,6 @@ module CardConnect
         @resource_name = '/inquire'
         @rest_method = 'get'
       end
-
     end
   end
 end

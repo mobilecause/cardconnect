@@ -1,4 +1,4 @@
-require "cardconnect/version"
+require 'cardconnect/version'
 
 require 'cardconnect/utils'
 require 'cardconnect/error'
@@ -30,9 +30,7 @@ require 'cardconnect/services/deposit/deposit'
 require 'cardconnect/services/void/void'
 
 module CardConnect
-
   class << self
-
     def configure
       yield(configuration)
     end
@@ -44,6 +42,5 @@ module CardConnect
     def connection
       @connection ||= Connection.new.connection
     end
-
   end
 end

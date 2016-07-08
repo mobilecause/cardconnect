@@ -1,0 +1,10 @@
+Metrics/LineLength:
+  Max: 110
+Documentation:
+  Enabled: false
+Style/NumericLiterals:
+  MinDigits: 10
+AllCops:
+  Exclude:
+    - LICENSE.txt
+    - README.md

@@ -3,13 +3,13 @@ module CardConnect
     class CaptureRequest
       include Utils
 
-      REQUIRED_FIELDS = [:merchid, :retref]
+      REQUIRED_FIELDS = [:merchid, :retref].freeze
 
-      OPTIONAL_FIELDS = [:authcode, :amount, :invoiceid, :ponumber, :taxamnt]
+      OPTIONAL_FIELDS = [:authcode, :amount, :invoiceid, :ponumber, :taxamnt].freeze
 
       FIELDS = REQUIRED_FIELDS + OPTIONAL_FIELDS
 
-      attr_accessor *FIELDS
+      attr_accessor(*FIELDS)
       attr_reader :errors
 
       # Initializes a new Capture Request
@@ -31,7 +31,7 @@ module CardConnect
       def payload
         payload = {}
         FIELDS.each do |field|
-          payload.merge!({field => send(field)})
+          payload.merge!(field => send(field))
         end
         payload
       end
@@ -44,7 +44,6 @@ module CardConnect
           value.nil? || value.empty? ? errors.push("#{field.capitalize} is missing") : next
         end
       end
-
     end
   end
 end

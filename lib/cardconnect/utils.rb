@@ -1,6 +1,5 @@
 module CardConnect
   module Utils
-
     def set_attributes(attributes, fields)
       return if attributes.empty?
       attributes = symbolize_keys(attributes)
@@ -17,6 +16,5 @@ module CardConnect
       end
       symbolized_hash
     end
-
   end
 end

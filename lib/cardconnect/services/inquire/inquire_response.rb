@@ -4,9 +4,9 @@ module CardConnect
       include Utils
 
       FIELDS = [:merchid, :account, :amount, :currency, :retref, :respcode,
-                :respproc, :respstat, :resptext, :setlstat]
+                :respproc, :respstat, :resptext, :setlstat].freeze
 
-      attr_accessor *FIELDS
+      attr_accessor(*FIELDS)
       attr_reader :errors
 
       def initialize(response)
@@ -21,11 +21,10 @@ module CardConnect
       def body
         body = {}
         FIELDS.each do |attr|
-          body.merge!({attr => send(attr)})
+          body.merge!(attr => send(attr))
         end
         body
       end
-
     end
   end
 end

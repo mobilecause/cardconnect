@@ -29,14 +29,14 @@ describe CardConnect::Service::Deposit do
       @service.build_request(@valid_params)
 
       @service.request.must_be_kind_of CardConnect::Service::DepositRequest
-      @service.request.merchid.must_equal "000000927996"
-      @service.request.date.must_equal "0110"
+      @service.request.merchid.must_equal '000000927996'
+      @service.request.date.must_equal '0110'
     end
 
     it 'uses default merchant ID if merchid is not passed in' do
-      @service.build_request(@valid_params.reject!{|k,v| k == 'merchid' })
+      @service.build_request(@valid_params.reject! { |k, _| k == 'merchid' })
       @service.request.must_be_kind_of CardConnect::Service::DepositRequest
-      @service.request.merchid.must_equal "merchant123"
+      @service.request.merchid.must_equal 'merchant123'
     end
   end
 
