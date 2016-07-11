@@ -45,6 +45,14 @@ module CardConnect
         end
       end
 
+      def delete
+        begin
+          response_class.new(connection.delete(path + request.payload).body)
+        rescue Faraday::ResourceNotFound => e
+          puts e.message
+        end
+      end
+
       def put
         begin
           response_class.new(connection.put(path, request.payload).body)
