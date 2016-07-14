@@ -4,10 +4,10 @@ module CardConnect
 
       attr_accessor :rest_method
 
-      # Initializes an Authorization Service
+      # Initializes an GetProfile Service
       #
       # @param connection [CardConnect::Connection]
-      # @return CardConnect::Service::Authorization
+      # @return CardConnect::Service::GetProfile
       def initialize(connection = CardConnect.connection)
         super(connection)
         @resource_name = '/profile'

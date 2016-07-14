@@ -1,21 +1,23 @@
 module CardConnect
   module Service
-    class GetProfileRequest
+    class ProfileRequest
       include Utils
 
-      REQUIRED_FIELDS = [:profileid, :acctid, :merchid]
+      REQUIRED_FIELDS = [:merchid, :account]
 
-      OPTIONAL_FIELDS = []
+      OPTIONAL_FIELDS = [:profile, :defaultacct, :profileupdate, :accttype, 
+                         :bankaba, :expiry, :name, :address, :city, :region, :country, 
+                         :phone, :postal, :ssnl4, :email, :license]
 
       FIELDS = REQUIRED_FIELDS + OPTIONAL_FIELDS
 
       attr_accessor *FIELDS
       attr_reader :errors
 
-      # Initializes a new GetProfile Request
+      # Initializes a new Profile Request
       #
       # @param attrs [Hash]
-      # @return CardConnect::GetProfileRequest
+      # @return CardConnect::ProfileRequest
       def initialize(attrs = {})
         @errors = []
         set_attributes(attrs, FIELDS)
@@ -29,9 +31,9 @@ module CardConnect
 
       # Builds the request payload
       def payload
-        payload = ""
+        payload = {}
         FIELDS.each do |field|
-          payload += "/#{send(field)}"
+          payload.merge!({field => send(field)})
         end
         payload
       end
