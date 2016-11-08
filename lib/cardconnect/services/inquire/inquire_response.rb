@@ -5,6 +5,15 @@ module CardConnect
 
       FIELDS = [:merchid, :account, :amount, :currency, :retref, :respcode,
                 :respproc, :respstat, :resptext, :setlstat].freeze
+                
+      # Settlement Status
+      AUTHORIZED = 'Authorized' # Txn has not been Captured
+      QUEUED = 'Queued for Capture' # Txn is in flight to Clearing House
+      ACCEPTED = 'Accepted' # Txn was accepted for Settlement
+      REJECTED = 'Rejected' # Txn was not accepted
+      ZERO_AMOUNT = 'Zero Amount' # Txn was $0
+      VOIDED = 'Voided' # Txn has been voided
+      DECLINED = 'Declined' # Txn had an error
 
       attr_accessor(*FIELDS)
       attr_reader :errors
