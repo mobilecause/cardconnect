@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = CardConnect::VERSION
   spec.authors       = ['Tim McKenzie', 'Prashant Mokkarala', 'Jason Taylor']
   spec.email         = ['tim@mobilecause.com', 'prashant@mobilecause.com', 'j.m.taylor1@gmail.com']
-  spec.summary       = 'CardConnect API Ruby Wrapper'
-  spec.description   = 'CardConnect API Ruby Wrapper'
+  spec.summary       = 'CardConnect API Ruby Client'
+  spec.description   = 'CardConnect API Ruby Client'
   spec.homepage      = 'http://developer.cardconnect.com/'
   spec.license       = 'MIT'
 
