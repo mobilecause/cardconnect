@@ -1,17 +1,17 @@
 module CardConnect
   module Service
-    class AuthorizationResponse
+    class GetProfileResponse
       include Utils
 
-      FIELDS = [:respstat, :retref, :account, :token, :amount, :merchid, :respcode,
-                :resptext, :respproc, :avsresp, :cvvresp, :authcode, :commcard, :profileid, :acctid].freeze
+      FIELDS = [:profileid, :acctid, :respstat, :account, :respcode, :resptext, :respproc, :accttype, :expiry, 
+                :name, :address, :city, :region, :country, :phone, :postal, :ssnl4, :email, :defaultacct, :license, :token]
 
-      attr_accessor(*FIELDS)
+      attr_accessor *FIELDS
       attr_reader :errors
 
-      STATUS_APPROVED = 'A'.freeze
-      STATUS_RETRY = 'B'.freeze
-      STATUS_DECLINED = 'C'.freeze
+      STATUS_APPROVED = 'A'
+      STATUS_RETRY = 'B'
+      STATUS_DECLINED = 'C'
 
       def initialize(response)
         set_attributes(response, FIELDS)
@@ -26,7 +26,7 @@ module CardConnect
       def body
         body = {}
         FIELDS.each do |attr|
-          body.merge!(attr => send(attr))
+          body.merge!({attr => send(attr)})
         end
         body
       end

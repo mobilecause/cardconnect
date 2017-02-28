@@ -29,6 +29,14 @@ require 'cardconnect/services/refund/refund'
 require 'cardconnect/services/deposit/deposit'
 require 'cardconnect/services/void/void'
 
+require 'cardconnect/services/profile/get_profile'
+require 'cardconnect/services/profile/get_profile_request'
+require 'cardconnect/services/profile/get_profile_response'
+
+require 'cardconnect/services/profile/profile'
+require 'cardconnect/services/profile/profile_request'
+require 'cardconnect/services/profile/profile_response'
+
 module CardConnect
   class << self
     def configure
