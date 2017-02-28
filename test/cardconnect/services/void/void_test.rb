@@ -26,7 +26,7 @@ describe CardConnect::Service::Void do
     end
 
     it 'uses the default merchant id if it is not passed in' do
-      @service.build_request(@valid_params.reject!{|k,v| k == 'merchid' })
+      @service.build_request(@valid_params.reject! { |k, _| k == 'merchid' })
       @service.request.merchid.must_equal 'merchant123'
     end
 
@@ -53,5 +53,4 @@ describe CardConnect::Service::Void do
       @service.response.must_be_kind_of CardConnect::Service::VoidResponse
     end
   end
-
 end

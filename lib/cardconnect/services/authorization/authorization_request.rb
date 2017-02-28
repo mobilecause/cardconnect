@@ -3,15 +3,16 @@ module CardConnect
     class AuthorizationRequest
       include Utils
 
-      REQUIRED_FIELDS = [:merchid, :account, :expiry, :amount, :currency]
+      REQUIRED_FIELDS = [:merchid, :account, :expiry, :amount, :currency].freeze
 
       OPTIONAL_FIELDS = [:accttype, :name, :address, :city, :region, :country, :phone,
                          :postal, :email, :ecomind, :cvv2, :orderid, :track, :bankaba,
-                         :tokenize, :termid, :capture, :ssnl4, :license, :profile, :userfields]
+                         :tokenize, :termid, :capture, :ssnl4, :license, :profile, :userfields,
+                         :ponumber, :authcode, :invoiceid, :taxamnt].freeze
 
       FIELDS = REQUIRED_FIELDS + OPTIONAL_FIELDS
 
-      attr_accessor *FIELDS
+      attr_accessor(*FIELDS)
       attr_reader :errors
 
       # Initializes a new Authorization Request
@@ -33,7 +34,7 @@ module CardConnect
       def payload
         payload = {}
         FIELDS.each do |field|
-          payload.merge!({field => send(field)})
+          payload.merge!(field => send(field))
         end
         payload
       end

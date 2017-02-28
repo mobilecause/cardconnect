@@ -11,11 +11,11 @@ describe CardConnect::Service::InquireRequest do
 
   describe 'FIELDS' do
     it 'should have merchant id' do
-      @request.merchid.must_equal "000000927996"
+      @request.merchid.must_equal '000000927996'
     end
 
     it 'should have retrieval reference number' do
-      @request.retref.must_equal "288002073633"
+      @request.retref.must_equal '288002073633'
     end
   end
 
@@ -37,7 +37,7 @@ describe CardConnect::Service::InquireRequest do
     end
   end
 
-  describe "#payload" do
+  describe '#payload' do
     it 'should generate the correct path params' do
       @request.payload.must_equal '/288002073633/000000927996'
     end

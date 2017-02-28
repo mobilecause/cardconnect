@@ -1,7 +1,6 @@
 module CardConnect
   module Service
     class SettlementStatus < ServiceEndpoint
-
       # Initializes a Settlement Status Service
       #
       # @param connection [CardConnect::Connection]
@@ -11,7 +10,6 @@ module CardConnect
         @resource_name = '/settlestat'
         @rest_method = 'get'
       end
-
     end
   end
 end

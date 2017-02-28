@@ -1,7 +1,6 @@
 module CardConnect
   module Service
     class Refund < ServiceEndpoint
-
       # Initializes a Refund Service
       #
       # @param connection [CardConnect::Connection]

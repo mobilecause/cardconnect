@@ -1,7 +1,6 @@
 module CardConnect
   module Service
     class Authorization < ServiceEndpoint
-
       # Initializes an Authorization Service
       #
       # @param connection [CardConnect::Connection]
@@ -11,7 +10,6 @@ module CardConnect
         @resource_name = '/auth'
         @rest_method = 'put'
       end
-
     end
   end
 end

@@ -1,4 +1,4 @@
-require "cardconnect/version"
+require 'cardconnect/version'
 
 require 'cardconnect/utils'
 require 'cardconnect/error'
@@ -38,9 +38,7 @@ require 'cardconnect/services/profile/profile_request'
 require 'cardconnect/services/profile/profile_response'
 
 module CardConnect
-
   class << self
-
     def configure
       yield(configuration)
     end
@@ -52,6 +50,5 @@ module CardConnect
     def connection
       @connection ||= Connection.new.connection
     end
-
   end
 end

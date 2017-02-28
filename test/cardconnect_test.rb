@@ -10,5 +10,4 @@ describe CardConnect do
       CardConnect.configuration.must_be_kind_of CardConnect::Configuration
     end
   end
-
 end

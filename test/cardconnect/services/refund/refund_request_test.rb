@@ -11,15 +11,15 @@ describe CardConnect::Service::RefundRequest do
 
   describe 'FIELDS' do
     it 'should have merchant id' do
-      @request.merchid.must_equal "000000927996"
+      @request.merchid.must_equal '000000927996'
     end
 
     it 'should have retrieval reference number' do
-      @request.retref.must_equal "288009185241"
+      @request.retref.must_equal '288009185241'
     end
 
     it 'should have amount' do
-      @request.amount.must_equal "59.60"
+      @request.amount.must_equal '59.60'
     end
   end
 

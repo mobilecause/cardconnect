@@ -35,10 +35,8 @@ describe CardConnect::Service::Capture do
     end
 
     it 'uses default merchant ID if merchid is not passed in' do
-      @service.build_request(@valid_params.reject!{|k,v| k == 'merchid' })
-
+      @service.build_request(@valid_params.reject! { |k, _| k == 'merchid' })
       @service.request.must_be_kind_of CardConnect::Service::CaptureRequest
-
       @service.request.merchid.must_equal 'merchant123'
     end
   end

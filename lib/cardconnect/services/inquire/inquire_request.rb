@@ -3,11 +3,11 @@ module CardConnect
     class InquireRequest
       include Utils
 
-      REQUIRED_FIELDS = [:merchid, :retref]
+      REQUIRED_FIELDS = [:merchid, :retref].freeze
 
       FIELDS = REQUIRED_FIELDS
 
-      attr_accessor *FIELDS
+      attr_accessor(*FIELDS)
       attr_reader :errors
 
       # Initializes a new Inquire Request
@@ -38,7 +38,6 @@ module CardConnect
           value.nil? || value.empty? ? errors.push("#{field.capitalize} is missing") : next
         end
       end
-
     end
   end
 end

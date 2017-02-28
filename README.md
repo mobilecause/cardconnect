@@ -1,9 +1,10 @@
 # CardConnect
 
-CardConnect API Ruby Wrapper
+CardConnect API Ruby Client
 
 [![Gem Version](https://badge.fury.io/rb/cardconnect.svg)](http://badge.fury.io/rb/cardconnect)
 [![Code Climate](https://codeclimate.com/github/mobilecause/cardconnect/badges/gpa.svg)](https://codeclimate.com/github/mobilecause/cardconnect)
+[![Build Status](https://travis-ci.org/mobilecause/cardconnect.svg?branch=master)](https://travis-ci.org/mobilecause/cardconnect)
 
 ## Installation
 

@@ -22,12 +22,12 @@ module CardConnect
 
       def build_request(params = {})
         req = symbolize_keys(params)
-        req = req.merge(merchid: @config.merchant_id) unless req.has_key?(:merchid)
+        req = req.merge(merchid: @config.merchant_id) unless req.key?(:merchid)
         @request = request_class.new(req)
       end
 
       def submit
-        raise CardConnect::Error, "Request has not been built" if request.nil?
+        raise CardConnect::Error, 'Request has not been built' if request.nil?
         @response = send(rest_method)
       end
 
@@ -38,11 +38,9 @@ module CardConnect
       end
 
       def get
-        begin
-          response_class.new(connection.get(path + request.payload).body)
-        rescue Faraday::ResourceNotFound => e
-          puts e.message
-        end
+        response_class.new(connection.get(path + request.payload).body)
+      rescue Faraday::ResourceNotFound => e
+        puts e.message
       end
 
       def delete
@@ -54,11 +52,9 @@ module CardConnect
       end
 
       def put
-        begin
-          response_class.new(connection.put(path, request.payload).body)
-        rescue Faraday::ResourceNotFound => e
-          puts e.message
-        end
+        response_class.new(connection.put(path, request.payload).body)
+      rescue Faraday::ResourceNotFound => e
+        puts e.message
       end
 
       def request_class
@@ -70,7 +66,7 @@ module CardConnect
       end
 
       def string_to_class(str)
-        str.split('::').inject(Object) { |mod, class_name| mod.const_get(class_name) }
+        str.split('::').inject(Object) { |a, e| a.const_get(e) }
       end
     end
   end
