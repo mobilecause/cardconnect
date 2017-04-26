@@ -19,6 +19,12 @@ require 'cardconnect/services/deposit/deposit_request'
 require 'cardconnect/services/deposit/deposit_response'
 require 'cardconnect/services/void/void_request'
 require 'cardconnect/services/void/void_response'
+require 'cardconnect/services/profile/profile_put_request'
+require 'cardconnect/services/profile/profile_put_response'
+require 'cardconnect/services/profile/profile_get_request'
+require 'cardconnect/services/profile/profile_get_response'
+require 'cardconnect/services/profile/profile_delete_request'
+require 'cardconnect/services/profile/profile_delete_response'
 
 require 'cardconnect/services/service_endpoint'
 require 'cardconnect/services/authorization/authorization'
@@ -28,14 +34,7 @@ require 'cardconnect/services/inquire/inquire'
 require 'cardconnect/services/refund/refund'
 require 'cardconnect/services/deposit/deposit'
 require 'cardconnect/services/void/void'
-
-require 'cardconnect/services/profile/get_profile'
-require 'cardconnect/services/profile/get_profile_request'
-require 'cardconnect/services/profile/get_profile_response'
-
 require 'cardconnect/services/profile/profile'
-require 'cardconnect/services/profile/profile_request'
-require 'cardconnect/services/profile/profile_response'
 
 module CardConnect
   class << self

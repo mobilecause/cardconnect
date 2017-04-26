@@ -28,6 +28,7 @@ module CardConnect
 
       def submit
         raise CardConnect::Error, 'Request has not been built' if request.nil?
+        raise CardConnect::Error, 'Rest method is required' if rest_method.nil?
         @response = send(rest_method)
       end
 
@@ -44,11 +45,9 @@ module CardConnect
       end
 
       def delete
-        begin
-          response_class.new(connection.delete(path + request.payload).body)
-        rescue Faraday::ResourceNotFound => e
-          puts e.message
-        end
+        response_class.new(connection.delete(path + request.payload).body)
+      rescue Faraday::ResourceNotFound => e
+        puts e.message
       end
 
       def put

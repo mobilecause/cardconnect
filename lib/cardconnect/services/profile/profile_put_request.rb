@@ -1,17 +1,17 @@
 module CardConnect
   module Service
-    class ProfileRequest
+    class ProfilePutRequest
       include Utils
 
       REQUIRED_FIELDS = [:merchid, :account]
 
-      OPTIONAL_FIELDS = [:profile, :defaultacct, :profileupdate, :accttype, 
-                         :bankaba, :expiry, :name, :address, :city, :region, :country, 
+      OPTIONAL_FIELDS = [:profile, :defaultacct, :profileupdate, :accttype, :profileid,
+                         :bankaba, :expiry, :name, :address, :city, :region, :country,
                          :phone, :postal, :ssnl4, :email, :license]
 
       FIELDS = REQUIRED_FIELDS + OPTIONAL_FIELDS
 
-      attr_accessor *FIELDS
+      attr_accessor(*FIELDS)
       attr_reader :errors
 
       # Initializes a new Profile Request

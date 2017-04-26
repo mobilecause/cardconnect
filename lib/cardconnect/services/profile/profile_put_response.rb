@@ -1,12 +1,13 @@
 module CardConnect
   module Service
-    class GetProfileResponse
+    class ProfilePutResponse
       include Utils
 
-      FIELDS = [:profileid, :acctid, :respstat, :account, :respcode, :resptext, :respproc, :accttype, :expiry, 
-                :name, :address, :city, :region, :country, :phone, :postal, :ssnl4, :email, :defaultacct, :license, :token]
+      FIELDS = [:profileid, :acctid, :respstat, :account, :respcode, :resptext, :respproc, :accttype,
+                :expiry, :name, :address, :city, :region, :country, :phone, :postal, :ssnl4, :email,
+                :defaultacct, :license, :gsacard, :auoptout]
 
-      attr_accessor *FIELDS
+      attr_accessor(*FIELDS)
       attr_reader :errors
 
       STATUS_APPROVED = 'A'

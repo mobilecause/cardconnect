@@ -1,21 +1,25 @@
 module CardConnect
   module Service
-    class GetProfileRequest
+    class ProfileGetRequest
       include Utils
 
+      # Making acctid required here even though this conflicts with
+      # information in the CardConnect docs because I can't get a successful
+      # response from their API unless I pass an acctid.  Please let me know
+      # if you know how to fix this.
       REQUIRED_FIELDS = [:profileid, :acctid, :merchid]
 
       OPTIONAL_FIELDS = []
 
       FIELDS = REQUIRED_FIELDS + OPTIONAL_FIELDS
 
-      attr_accessor *FIELDS
+      attr_accessor(*FIELDS)
       attr_reader :errors
 
-      # Initializes a new GetProfile Request
+      # Initializes a new ProfileGetRequest
       #
       # @param attrs [Hash]
-      # @return CardConnect::GetProfileRequest
+      # @return CardConnect::ProfileGetRequest
       def initialize(attrs = {})
         @errors = []
         set_attributes(attrs, FIELDS)
@@ -29,11 +33,7 @@ module CardConnect
 
       # Builds the request payload
       def payload
-        payload = ""
-        FIELDS.each do |field|
-          payload += "/#{send(field)}"
-        end
-        payload
+        "/#{profileid}/#{acctid}/#{merchid}"
       end
 
       private

@@ -26,7 +26,7 @@ describe CardConnect::Service::Inquire do
       @valid_params = nil
     end
 
-    it 'creates a Capture request object with the passed in params' do
+    it 'creates a inquire request object with the passed in params' do
       @service.build_request(@valid_params)
 
       @service.request.must_be_kind_of CardConnect::Service::InquireRequest

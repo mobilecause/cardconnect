@@ -13,7 +13,8 @@ def valid_auth_response # rubocop:disable Metrics/MethodLength
     'authcode' => '046221',
     'respproc' => 'FNOR',
     'commcard' => 'N',
-    'profileid' => '12345678'
+    'profileid' => '12345678',
+    'acctid' => nil
   }
 end
 
@@ -111,5 +112,65 @@ def valid_void_response # rubocop:disable Metrics/MethodLength
     'respproc' => 'FNOR',
     'respstat' => 'A',
     'currency' => 'USD'
+  }
+end
+
+def valid_profile_get_response #rubocop:disable Metrics/MethodLength
+  {
+    "resptext": 'Profile found',
+    "respcode": 'A',
+    "respstat": 'B',
+    "respproc": "PPS",
+    "account": '41XXXXXXXXXX1111',
+    "defaultacct": "12345",
+    "ssnl4": "1234",
+    "email": 'test@test.com',
+    "phone": "7778789999",
+    "region": "AK",
+    "postal": "19090",
+    "address": "123 MAIN STREET",
+    "accttype": "VISA",
+    "token": "9440670166031111",
+    "name": "TOM JONES",
+    "license": "123451254",
+    "country": "US",
+    "city": "ANYTOWN",
+    "expiry": "0214",
+    "profileid": "12345678901234567890",
+    "acctid": "1"
+  }
+end
+
+def valid_profile_delete_response #rubocop:disable Metrics/MethodLength
+  {
+    "resptext": "Profile Deleted",
+    "respcode": "08",
+    "profileid": "12345678901234567890",
+    "acctid": "1",
+    "respproc": "PPS",
+    "respstat": "A"
+  }
+end
+
+def valid_profile_put_response #rubocop:disable Metrics/MethodLength
+  {
+    "region": "AK",
+    "phone": "7778789999",
+    "accttype": "VISA",
+    "postal": "19090",
+    "ssnl4": "3655",
+    "respproc": "PPS",
+    "expiry": "0214",
+    "city": "ANYTOWN",
+    "country": "US",
+    "resptext": "Profile Saved",
+    "token": "9440670166031111",
+    "respcode": "09",
+    "address": "123 MAIN STREET",
+    "name": "TOM JONES",
+    "license": "123451254",
+    "respstat": "A",
+    "profileid": "12345678901234567890",
+    "acctid": "1"
   }
 end

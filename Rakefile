@@ -203,4 +203,49 @@ namespace :cardconnect do
       puts deposit.request.errors
     end
   end
+
+  desc 'Simulate a Profile request. Available rest methods: [put, get, delete]'
+  task :profile, [:rest_method, :profileid, :account_id, :merchant_id, :api_username, :api_password, :api_endpoint] do |_, args|
+    cardconnect_configure(args)
+
+    profile_params = {
+      'merchid' => CardConnect.configuration.merchant_id,
+      'profileid' => args[:profileid],
+      'acctid' => args[:account_id]
+    }
+
+    profile_put_params = {
+      "region": "AK",
+      "phone": "7778789999",
+      "accttype": "VISA",
+      "postal": "19090",
+      "ssnl4": "3655",
+      "expiry": "0214",
+      "city": "ANYTOWN",
+      "country": "US",
+      "address": "123 MAIN STREET",
+      "merchid": args[:merchant_id],
+      'profileid' => args[:profileid],
+      "name": "TOM JONES",
+      "account": "4444333322221111",
+      "license": "123451254",
+      "defaultacct": "N",
+      "profileupdate": "Y"
+    }
+
+    profile = CardConnect::Service::Profile.new(args.rest_method)
+
+    if args.rest_method == 'put'
+      profile.build_request(profile_put_params)
+    else
+      profile.build_request(profile_params)
+    end
+
+    if profile.request.valid?
+      response = profile.submit
+      puts response.body
+    else
+      puts profile.request.errors
+    end
+  end
 end

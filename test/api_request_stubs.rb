@@ -85,3 +85,35 @@ def valid_void_request
     'amount' => '101'
   }
 end
+
+def valid_profile_request
+  {
+    'profileid' => '12345678901234567890',
+    'acctid' => '1',
+    'merchid' => '000000927996'
+  }
+end
+
+def valid_profile_put_request
+  {
+    "region": "AK",
+    "phone": "7778789999",
+    "accttype": "VISA",
+    "postal": "19090",
+    "ssnl4": "3655",
+    "expiry": "0214",
+    "city": "ANYTOWN",
+    "country": "US",
+    "address": "123 MAIN STREET",
+    "merchid": '000000927996',
+    "profileid": '12345678901234567890',
+    "profile": '12345678901234567890acctid',
+    "bankaba": '1234567',
+    "email": 'test@email.com',
+    "name": "TOM JONES",
+    "account": "4444333322221111",
+    "license": "123451254",
+    "defaultacct": "N",
+    "profileupdate": "Y"
+  }
+end
