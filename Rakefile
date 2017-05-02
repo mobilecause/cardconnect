@@ -194,22 +194,22 @@ namespace :cardconnect do
     }
 
     profile_put_params = {
-      "region": "AK",
-      "phone": "7778789999",
-      "accttype": "VISA",
-      "postal": "19090",
-      "ssnl4": "3655",
-      "expiry": "0214",
-      "city": "ANYTOWN",
-      "country": "US",
-      "address": "123 MAIN STREET",
-      "merchid": args[:merchant_id],
+      "region" => "AK",
+      "phone" => "7778789999",
+      "accttype" => "VISA",
+      "postal" => "19090",
+      "ssnl4" => "3655",
+      "expiry" => "0214",
+      "city" => "ANYTOWN",
+      "country" => "US",
+      "address" => "123 MAIN STREET",
+      "merchid" => args[:merchant_id],
       'profileid' => args[:profileid],
-      "name": "TOM JONES",
-      "account": "4444333322221111",
-      "license": "123451254",
-      "defaultacct": "N",
-      "profileupdate": "Y"
+      "name" => "TOM JONES",
+      "account" => "4444333322221111",
+      "license" => "123451254",
+      "defaultacct" => "N",
+      "profileupdate" => "Y"
     }
 
     profile = CardConnect::Service::Profile.new(args.rest_method)
