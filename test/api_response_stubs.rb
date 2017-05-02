@@ -72,35 +72,6 @@ def valid_refund_response
   }
 end
 
-def valid_deposit_response # rubocop:disable Metrics/MethodLength
-  [
-    {
-      'accttype' => 'VI',
-      'postdate' => '20121009',
-      'cbakamnt' => '0.00',
-      'feeamnt' => '0.55',
-      'currency' => 'USD',
-      'amount' => '11.00',
-      'respproc' => 'FNOR',
-      'txns' => [
-        {
-          'merchbatch' => 92821429,
-          'retref' => '282005142924',
-          'hostbatch' => '1429',
-          'feeamnt' => '0.00',
-          'action' => 'DEB',
-          'depamnt' => '11.00'
-        }
-      ],
-      'resptext' => 'Successful or something',
-      'depositid' => 7,
-      'merchid' => '000000927996',
-      'action' => 'DEB',
-      'actdate' => '20121008'
-    }
-  ]
-end
-
 def valid_void_response # rubocop:disable Metrics/MethodLength
   {
     'amount' => '1.01',

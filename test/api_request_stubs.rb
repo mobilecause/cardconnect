@@ -74,10 +74,6 @@ def valid_refund_request
   }
 end
 
-def valid_deposit_request
-  valid_settlestat_request
-end
-
 def valid_void_request
   {
     'retref' => '288013185633',

@@ -124,18 +124,6 @@ service.build_request(params)
 response = service.submit
 ```
 
-### Deposit Service
-
-CardConnect documentation for this service can be found here: http://developer.cardconnect.com/cardconnect-api/#deposit-service
-
-Example:
-
-```ruby
-service = CardConnect::Service::Deposit.new
-service.build_request(params)
-response = service.submit
-```
-
 ### Response Codes
 
 http://developer.cardconnect.com/cardconnect-api/#response-codes
