@@ -144,6 +144,22 @@ http://developer.cardconnect.com/cardconnect-api/#response-codes
 
 * Funding Service needs to be implemented
 
+#### Signature Capture Service
+
+* Signature Capture Service needs to be implemented
+
+#### Open Batch Service
+
+* Open Batch Service needs to be implemented
+
+#### Close Batch Service
+
+* Close Batch Service needs to be implemented
+
+#### Bin Service
+
+* Bin Service needs to be implemented
+
 ## Contributing
 
 1. Fork it ( https://github.com/mobilecause/cardconnect/fork )
