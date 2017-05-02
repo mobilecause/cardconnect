@@ -111,6 +111,19 @@ service.build_request(params)
 response = service.submit
 ```
 
+### Profile Service
+Thanks to [@AndreiBujenitsa](https://github.com/AndreiBujenitsa) for implementing Profile Service!
+
+CardConnect documentation for this service can be found here: https://developer.cardconnect.com/cardconnect-api/#profile-service
+
+Example:
+
+```ruby
+service = CardConnect::Service::Profile.new
+service.build_request(params)
+response = service.submit
+```
+
 ### Deposit Service
 
 CardConnect documentation for this service can be found here: http://developer.cardconnect.com/cardconnect-api/#deposit-service
@@ -142,10 +155,6 @@ http://developer.cardconnect.com/cardconnect-api/#response-codes
 #### Funding Service
 
 * Funding Service needs to be implemented
-
-#### Profile Service
-
-* Profile Service needs to be implemented
 
 ## Contributing
 
