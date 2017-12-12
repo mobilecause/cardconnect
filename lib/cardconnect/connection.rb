@@ -33,7 +33,7 @@ module CardConnect
         headers: {
           user_agent: "CardConnectRubyGem/#{CardConnect::VERSION}"
         },
-      }.merge(@config.connection_options.to_h)
+      }.merge(@config.connection_options)
     end
   end
 end

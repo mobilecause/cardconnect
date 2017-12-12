@@ -8,6 +8,7 @@ module CardConnect
     attr_accessor :connection_options
 
     def initialize
+      @connection_options = {}
     end
   end
 end
