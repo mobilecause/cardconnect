@@ -31,6 +31,17 @@ describe CardConnect::Connection do
       it 'must have a handler for parsing the json response third' do
         @connection.builder.handlers[2].must_be :===, FaradayMiddleware::ParseJson
       end
+
+      it 'has ssl verification on by default' do
+        assert(@connection.ssl.verify?)
+      end
+
+      it 'has the ability to accept ssl options' do
+        config = CardConnect.configuration.dup
+        config.connection_options = { ssl: { verify: false } }
+        connection = CardConnect::Connection.new(config).connection
+        refute(connection.ssl.verify)
+      end
     end
   end
 end
