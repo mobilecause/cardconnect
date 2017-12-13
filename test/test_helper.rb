@@ -19,7 +19,7 @@ end
 module CardConnect
   class Connection
     def connection
-      @connection ||= Faraday.new(url: @config.endpoint, headers: @headers) do |faraday|
+      @connection ||= Faraday.new(faraday_options) do |faraday|
         faraday.request :basic_auth, @config.api_username, @config.api_password
         faraday.request :json
 

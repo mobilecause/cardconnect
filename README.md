@@ -37,6 +37,16 @@ CardConnect.configure do |config|
 end
 ```
 
+You may pass additional options into the [Faraday connection](https://github.com/lostisland/faraday/blob/master/lib/faraday/connection.rb) via `connection_options`.
+
+```ruby
+CardConnection.configure do |config|
+  config.connection_options = { ssl: your_ssl_options }
+end
+```
+
+_Note: We do not recommend setting `verify: false`_
+
 ## Services
 
 ### Authorization Service
