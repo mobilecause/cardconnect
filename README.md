@@ -122,7 +122,6 @@ response = service.submit
 ```
 
 ### Profile Service
-Thanks to [@AndreiBujenitsa](https://github.com/AndreiBujenitsa) for implementing Profile Service!
 
 CardConnect documentation for this service can be found here: https://developer.cardconnect.com/cardconnect-api/#profile-service
 
