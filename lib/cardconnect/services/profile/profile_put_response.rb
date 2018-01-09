@@ -5,7 +5,7 @@ module CardConnect
 
       FIELDS = [:profileid, :acctid, :respstat, :account, :respcode, :resptext, :respproc, :accttype,
                 :expiry, :name, :address, :city, :region, :country, :phone, :postal, :ssnl4, :email,
-                :defaultacct, :license, :gsacard, :auoptout]
+                :defaultacct, :license, :gsacard, :auoptout, :token]
 
       attr_accessor(*FIELDS)
       attr_reader :errors
