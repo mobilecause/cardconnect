@@ -125,23 +125,28 @@ end
 
 def valid_profile_put_response #rubocop:disable Metrics/MethodLength
   {
-    "region" => "AK",
-    "phone" => "7778789999",
-    "accttype" => "VISA",
-    "postal" => "19090",
-    "ssnl4" => "3655",
-    "respproc" => "PPS",
-    "expiry" => "0214",
-    "city" => "ANYTOWN",
     "country" => "US",
-    "resptext" => "Profile Saved",
-    "token" => "9440670166031111",
-    "respcode" => "09",
     "address" => "123 MAIN STREET",
-    "name" => "TOM JONES",
+    "resptext" => "Profile Saved",
+    "city" => "ANYTOWN",
+    "acctid" => "1",
+    "respcode" => "09",
+    "defaultacct" => "Y",
+    "accttype" => "VISA",
+    "token" => "9441149619831111",
+    "account" => "41XXXXXXXXXX1111",
+    "email" => "test@test.com",
     "license" => "123451254",
+    "respproc" => "PPS",
+    "phone" => "7778789999",
+    "profileid" => "12305454023615201322",
+    "name" => "TOM JONES",
+    "auoptout" => "N",
+    "postal" => "19090",
+    "expiry" => "0214",
+    "region" => "AK",
+    "ssnl4" => "3655",
     "respstat" => "A",
-    "profileid" => "12345678901234567890",
-    "acctid" => "1"
+    "gsacard" => "N"
   }
 end
