@@ -3,7 +3,8 @@ module CardConnect
     class CaptureResponse
       include Utils
 
-      FIELDS = [:merchid, :account, :amount, :retref, :setlstat].freeze
+      FIELDS = [:merchid, :account, :amount, :retref, :setlstat, :respproc,
+                :resptext, :respstat, :respcode, :batchid, :token].freeze
 
       # Settlement Statuses
       TXN_NOT_FOUND = 'Txn not found' # The Retref was not found
