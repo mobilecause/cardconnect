@@ -24,7 +24,14 @@ def valid_capture_response
     'setlstat' => 'Pending',
     'retref' => '288002073633',
     'merchid' => '000000927996',
-    'account' => '41XXXXXXXXXX4113'
+    'account' => '41XXXXXXXXXX4113',
+    'respproc' => 'FNOR',
+    'resptext' => 'Approval',
+    'respstat' => 'A',
+    'respcode' => '00',
+    'batchid' => '1900941569',
+    'token' => '9418594164541111',
+    'commcard' => ' C '
   }
 end
 
