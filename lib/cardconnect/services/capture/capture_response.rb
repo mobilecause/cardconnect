@@ -4,8 +4,8 @@ module CardConnect
       include Utils
 
       FIELDS = [:merchid, :account, :amount, :retref, :setlstat, :respproc,
-                :resptext, :commcard, :respstat, :respcode, :batchid,
-                :token].freeze
+                :resptext, :commcard, :respstat, :respcode,
+                :batchid, :token].freeze
 
       # Settlement Statuses
       TXN_NOT_FOUND = 'Txn not found' # The Retref was not found
