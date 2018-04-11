@@ -29,11 +29,7 @@ module CardConnect
 
       # Builds the request payload
       def payload
-        payload = {}
-        FIELDS.each do |field|
-          payload.merge!(field => send(field))
-        end
-        payload
+        FIELDS.collect{|field| {field => send(field)} }.reduce({}, :merge)
       end
 
       private

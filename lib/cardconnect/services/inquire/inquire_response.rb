@@ -3,17 +3,20 @@ module CardConnect
     class InquireResponse
       include Utils
 
-      FIELDS = [:merchid, :account, :amount, :currency, :retref, :respcode,
-                :respproc, :respstat, :resptext, :setlstat].freeze
-                
+      FIELDS = [
+        :merchid, :account, :amount, :currency, :retref, :respcode,
+        :respproc, :respstat, :resptext, :setlstat, :capturedate, :batchid,
+        :token, :authdate, :lastfour, :name, :currency, :settledate
+      ].freeze
+
       # Settlement Status
-      AUTHORIZED = 'Authorized' # Txn has not been Captured
-      QUEUED = 'Queued for Capture' # Txn is in flight to Clearing House
-      ACCEPTED = 'Accepted' # Txn was accepted for Settlement
-      REJECTED = 'Rejected' # Txn was not accepted
+      AUTHORIZED  = 'Authorized' # Txn has not been Captured
+      QUEUED      = 'Queued for Capture' # Txn is in flight to Clearing House
+      ACCEPTED    = 'Accepted' # Txn was accepted for Settlement
+      REJECTED    = 'Rejected' # Txn was not accepted
       ZERO_AMOUNT = 'Zero Amount' # Txn was $0
-      VOIDED = 'Voided' # Txn has been voided
-      DECLINED = 'Declined' # Txn had an error
+      VOIDED      = 'Voided' # Txn has been voided
+      DECLINED    = 'Declined' # Txn had an error
 
       attr_accessor(*FIELDS)
       attr_reader :errors
@@ -28,11 +31,7 @@ module CardConnect
       end
 
       def body
-        body = {}
-        FIELDS.each do |attr|
-          body.merge!(attr => send(attr))
-        end
-        body
+        FIELDS.collect{|attr| {attr => send(attr)} }.reduce({}, :merge)
       end
     end
   end
