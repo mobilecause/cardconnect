@@ -24,7 +24,14 @@ def valid_capture_response
     'setlstat' => 'Pending',
     'retref' => '288002073633',
     'merchid' => '000000927996',
-    'account' => '41XXXXXXXXXX4113'
+    'account' => '41XXXXXXXXXX4113',
+    'respproc' => 'FNOR',
+    'resptext' => 'Approval',
+    'respstat' => 'A',
+    'respcode' => '00',
+    'batchid' => '1900941569',
+    'token' => '9418594164541111',
+    'commcard' => ' C '
   }
 end
 
@@ -39,7 +46,14 @@ def valid_inquire_response # rubocop:disable Metrics/MethodLength
     'account' => '41XXXXXXXXXX4113',
     'respproc' => 'FNOR',
     'respstat' => 'A',
-    'currency' => 'USD'
+    'currency' => 'USD',
+    'token' => '9418594164541111',
+    'authdate' => '20180410',
+    'lastfour' => '1111',
+    'name' => '',
+    'capturedate' => nil,
+    'batchid' => nil,
+    'settledate' => nil
   }
 end
 
@@ -108,7 +122,9 @@ def valid_profile_get_response #rubocop:disable Metrics/MethodLength
     "city" => "ANYTOWN",
     "expiry" => "0214",
     "profileid" => "12345678901234567890",
-    "acctid" => "1"
+    "acctid" => "1",
+    "gsacard" => "N",
+    "auoptout" => "N"
   }
 end
 

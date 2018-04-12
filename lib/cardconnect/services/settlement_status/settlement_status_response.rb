@@ -20,11 +20,7 @@ module CardConnect
       end
 
       def body
-        body = {}
-        FIELDS.each do |attr|
-          body.merge!(attr => send(attr))
-        end
-        body
+        FIELDS.collect{|attr| {attr => send(attr)} }.reduce({}, :merge)
       end
 
       private
