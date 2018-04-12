@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.3.0
+
+* Added the following fields to response objects (@shivashankar-ror):
+  - CaptureResponse: `:respproc, :resptext, :commcard, :respstat, :respcode, :batchid, :token`
+  - InquireResponse: `:capturedate, :batchid, :token, :authdate, :lastfour, :name, :currency, :settledate`
+  - ProfileGetResponse: `:gsacard, :auoptout`
+
 ## v2.2.0
 
 * Add `token` field to Profile Service for create/update responses since this field can potentially be included in the response if a token hadn't already been created for that particular profile. (@mauriciozaffari)
