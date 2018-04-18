@@ -34,26 +34,25 @@ def valid_capture_response
     'commcard' => ' C '
   }
 end
-
 def valid_inquire_response # rubocop:disable Metrics/MethodLength
   {
     'amount' => '596.00',
     'resptext' => 'Approval',
-    'setlstat' => 'NOTCAPTURED',
+    'setlstat' => 'Accepted',
     'respcode' => '00',
     'retref' => '288015190411',
     'merchid' => '000000927996',
-    'account' => '41XXXXXXXXXX4113',
+    'account' => '9418594164541111',
     'respproc' => 'FNOR',
     'respstat' => 'A',
     'currency' => 'USD',
     'token' => '9418594164541111',
     'authdate' => '20180410',
     'lastfour' => '1111',
-    'name' => '',
-    'capturedate' => nil,
-    'batchid' => nil,
-    'settledate' => nil
+    'name' => 'TOM JONES',
+    'capturedate' => '20180326065748',
+    'batchid' => '1900941569',
+    'settledate' => '20180327143721'
   }
 end
 
