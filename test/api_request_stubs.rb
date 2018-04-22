@@ -113,3 +113,10 @@ def valid_profile_put_request
     "profileupdate" => "Y"
   }
 end
+
+def valid_bin_request
+  {
+    'token' => '9477709629051443',
+    'merchid' => '000000927996'
+  }
+end

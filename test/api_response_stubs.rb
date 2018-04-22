@@ -166,3 +166,20 @@ def valid_profile_put_response #rubocop:disable Metrics/MethodLength
     "gsacard" => "N"
   }
 end
+
+def valid_bin_response
+  {
+    "country" => "USA",
+    "product" => "V",
+    "cardusestring" => "True credit",
+    "gsa" => false,
+    "corporate" => true,
+    "fsa" => false,
+    "subtype" => "Visa Corporate T&E",
+    "purchase" => false,
+    "prepaid" => false,
+    "binlo" => "478823XXX",
+    "issuer" => "JPMorgan Chase Bank N.A. - Commercial",
+    "binhi" => "478825XXX"
+  }
+end

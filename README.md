@@ -133,6 +133,18 @@ service.build_request(params)
 response = service.submit
 ```
 
+### Bin Service
+
+CardConnect documentation for this service can be found here: https://developer.cardconnect.com/cardconnect-api#bin-service
+
+Example:
+
+```ruby
+service = CardConnect::Service::Bin.new
+service.build_request(params)
+response = service.submit
+```
+
 ### Response Codes
 
 http://developer.cardconnect.com/cardconnect-api/#response-codes
@@ -164,10 +176,6 @@ http://developer.cardconnect.com/cardconnect-api/#response-codes
 #### Close Batch Service
 
 * Close Batch Service needs to be implemented
-
-#### Bin Service
-
-* Bin Service needs to be implemented
 
 ## Contributing
 
