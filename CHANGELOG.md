@@ -7,6 +7,8 @@
   - InquireResponse: `:capturedate, :batchid, :token, :authdate, :lastfour, :name, :currency, :settledate`
   - ProfileGetResponse: `:gsacard, :auoptout`
 
+* Added support for Bin Service (@shivashankar-ror)
+
 ## v2.2.0
 
 * Add `token` field to Profile Service for create/update responses since this field can potentially be included in the response if a token hadn't already been created for that particular profile. (@mauriciozaffari)
