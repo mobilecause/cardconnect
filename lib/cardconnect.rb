@@ -23,6 +23,8 @@ require 'cardconnect/services/profile/profile_get_request'
 require 'cardconnect/services/profile/profile_get_response'
 require 'cardconnect/services/profile/profile_delete_request'
 require 'cardconnect/services/profile/profile_delete_response'
+require 'cardconnect/services/bin/bin_request'
+require 'cardconnect/services/bin/bin_response'
 
 require 'cardconnect/services/service_endpoint'
 require 'cardconnect/services/authorization/authorization'
@@ -32,6 +34,8 @@ require 'cardconnect/services/inquire/inquire'
 require 'cardconnect/services/refund/refund'
 require 'cardconnect/services/void/void'
 require 'cardconnect/services/profile/profile'
+require 'cardconnect/services/bin/bin'
+
 
 module CardConnect
   class << self
