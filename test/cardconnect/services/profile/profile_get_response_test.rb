@@ -93,6 +93,14 @@ describe CardConnect::Service::ProfileGetResponse do
     it 'should have token' do
       @response.token.must_equal '9440670166031111'
     end
+
+    it 'should have gsacard' do
+      @response.gsacard.must_equal 'N'
+    end
+
+    it 'should have auoptout' do
+      @response.auoptout.must_equal 'N'
+    end
   end
 
   describe '#success?' do
