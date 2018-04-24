@@ -14,8 +14,12 @@ describe CardConnect::Service::InquireResponse do
       @response.merchid.must_equal '000000927996'
     end
 
+    it 'should have name' do
+      @response.name.must_equal 'TOM JONES'
+    end
+
     it 'should have account' do
-      @response.account.must_equal '41XXXXXXXXXX4113'
+      @response.account.must_equal '9418594164541111'
     end
 
     it 'should have amount' do
@@ -47,7 +51,27 @@ describe CardConnect::Service::InquireResponse do
     end
 
     it 'should have settlement status' do
-      @response.setlstat.must_equal 'NOTCAPTURED'
+      @response.setlstat.must_equal 'Accepted'
+    end
+
+    it 'should have token' do
+      @response.token.must_equal '9418594164541111'
+    end
+
+    it 'should have authdate' do
+      @response.authdate.must_equal '20180410'
+    end
+
+    it 'should have captureddate' do
+      @response.capturedate.must_equal '20180326065748'
+    end
+
+    it 'should have lastfour value' do
+      @response.lastfour.must_equal '1111'
+    end
+
+    it 'should have settledate' do
+      @response.settledate.must_equal '20180327143721'
     end
   end
 
