@@ -3,7 +3,7 @@ module CardConnect
     class InquireResponse
       include Utils
 
-      FIELDS = [:merchid, :account, :amount, :currency, :retref, :respcode,
+      FIELDS = [:merchid, :account, :expiry, :lastfour, :amount, :currency, :retref, :respcode,
                 :respproc, :respstat, :resptext, :setlstat].freeze
                 
       # Settlement Status
