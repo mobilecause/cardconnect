@@ -13,6 +13,7 @@ def valid_auth_response # rubocop:disable Metrics/MethodLength
     'authcode' => '046221',
     'respproc' => 'FNOR',
     'commcard' => 'N',
+    'expiry' => '04/32',
     'profileid' => '12345678',
     'acctid' => nil
   }
@@ -47,6 +48,7 @@ def valid_inquire_response # rubocop:disable Metrics/MethodLength
     'respstat' => 'A',
     'currency' => 'USD',
     'token' => '9418594164541111',
+    'expiry' => '04/32',
     'authdate' => '20180410',
     'lastfour' => '1111',
     'name' => 'TOM JONES',
