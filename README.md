@@ -149,6 +149,23 @@ response = service.submit
 
 http://developer.cardconnect.com/cardconnect-api/#response-codes
 
+## Run-time logins
+Typically, you want to use `config/initializers/cardconnect.rb` to set your API username and password details in a secure way, as detailed above. If you need to connect to multiple CardConnect accounts, you can specify the username/password immediately before processing a transaction.
+
+Example:
+```
+config = CardConnect::Configuration.new
+config.api_username = "username"
+config.api_password = "password123"
+config.endpoint = "https://url.com"
+
+connection = CardConnect::Connection.new(config).connection
+service = CardConnect::Service::Authorize.new(connection)
+service.build_request(params)
+response = service.submit
+```
+Username, password, and/or endpoint can be defined either in the CardConnect initializer or overridden at runtime.
+
 ## To Do:
 
 #### Authorization Service
