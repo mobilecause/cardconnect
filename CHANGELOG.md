@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.4.0
+
+* Upgrades `faraday` and `faraday_middleware` dependency versions to use ones that works with ruby 3.0.
+
 ## v2.3.0
 
 * Added the following fields to response objects (@shivashankar-ror):
