@@ -7,9 +7,10 @@ module CardConnect
       @config = config
     end
 
-    def connection
+    def connection(config = nil)
+      config ||= @config
       @connection ||= Faraday.new(faraday_options) do |f|
-        f.request :basic_auth, @config.api_username, @config.api_password
+        f.request :basic_auth, config.api_username, config.api_password
         f.request :json
 
         f.response :json, content_type: /\bjson$/
