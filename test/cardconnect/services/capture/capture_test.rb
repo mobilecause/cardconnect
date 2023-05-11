@@ -13,7 +13,7 @@ describe CardConnect::Service::Capture do
   end
 
   it 'must have the right path' do
-    @service.path.must_equal '/cardconnect/rest/capture'
+    _(@service.path).must_equal '/cardconnect/rest/capture'
   end
 
   describe '#build_request' do
@@ -28,29 +28,29 @@ describe CardConnect::Service::Capture do
     it 'creates a Capture request object with the passed in params' do
       @service.build_request(@valid_params)
 
-      @service.request.must_be_kind_of CardConnect::Service::CaptureRequest
+      _(@service.request).must_be_kind_of CardConnect::Service::CaptureRequest
 
-      @service.request.merchid.must_equal '000000927996'
-      @service.request.retref.must_equal '288002073633'
+      _(@service.request.merchid).must_equal '000000927996'
+      _(@service.request.retref).must_equal '288002073633'
     end
 
     it 'uses default merchant ID if merchid is not passed in' do
       @service.build_request(@valid_params.reject! { |k, _| k == 'merchid' })
-      @service.request.must_be_kind_of CardConnect::Service::CaptureRequest
-      @service.request.merchid.must_equal 'merchant123'
+      _(@service.request).must_be_kind_of CardConnect::Service::CaptureRequest
+      _(@service.request.merchid).must_equal 'merchant123'
     end
   end
 
   describe '#submit' do
     it 'raises an error when there is no request' do
-      @service.request.nil?.must_equal true
-      proc { @service.submit }.must_raise CardConnect::Error
+      _(@service.request.nil?).must_equal true
+      _{ @service.submit }.must_raise CardConnect::Error
     end
 
     it 'creates a response when a valid request is processed' do
       @service.build_request(valid_capture_request)
       @service.submit
-      @service.response.must_be_kind_of CardConnect::Service::CaptureResponse
+      _(@service.response).must_be_kind_of CardConnect::Service::CaptureResponse
     end
   end
 end

@@ -11,57 +11,57 @@ describe CardConnect::Service::ProfileDeleteResponse do
 
   describe 'FIELDS' do
     it 'should have response text' do
-      @response.resptext.must_equal 'Profile Deleted'
+      _(@response.resptext).must_equal 'Profile Deleted'
     end
 
     it 'should have the response code' do
-      @response.respcode.must_equal '08'
+      _(@response.respcode).must_equal '08'
     end
 
     it 'should have the respproc' do
-      @response.respproc.must_equal 'PPS'
+      _(@response.respproc).must_equal 'PPS'
     end
 
     it 'should have response status' do
-      @response.respstat.must_equal 'A'
+      _(@response.respstat).must_equal 'A'
     end
 
     it 'should have profileid' do
-      @response.profileid.must_equal '12345678901234567890'
+      _(@response.profileid).must_equal '12345678901234567890'
     end
 
     it 'should have acctid' do
-      @response.acctid.must_equal '1'
+      _(@response.acctid).must_equal '1'
     end
   end
 
   describe '#success?' do
     it 'should be true when there are no errors' do
-      @response.success?.must_equal true
+      _(@response.success?).must_equal true
     end
 
     it 'should be false when there are errors' do
       prof_response = valid_profile_delete_response.merge!('respstat' => 'C', 'resptext' => 'this is an error')
       response = CardConnect::Service::ProfileDeleteResponse.new(prof_response)
-      response.success?.must_equal false
+      _(response.success?).must_equal false
     end
   end
 
   describe '#errors' do
     it 'should be empty when there are no errors' do
-      @response.errors.must_be_empty
+      _(@response.errors).must_be_empty
     end
 
     it 'should be an array of error messages when there are errors' do
       prof_response = valid_profile_delete_response.merge!('respstat' => 'C', 'resptext' => 'this is an error')
       response = CardConnect::Service::ProfileDeleteResponse.new(prof_response)
-      response.errors.must_equal ['this is an error']
+      _(response.errors).must_equal ['this is an error']
     end
   end
 
   describe '#body' do
     it 'should generate hash with all the right values' do
-      @response.body.must_equal symbolize_keys(valid_profile_delete_response)
+      _(@response.body).must_equal symbolize_keys(valid_profile_delete_response)
     end
   end
 end
