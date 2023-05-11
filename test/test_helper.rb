@@ -22,7 +22,7 @@ module CardConnect
 
     def connection
       @connection ||= Faraday.new(faraday_options) do |faraday|
-        faraday.request :basic_auth, @config.api_username, @config.api_password
+        faraday.request :authorization, :basic, @config.api_username, @config.api_password
         faraday.request :json
 
         faraday.response :json, content_type: /\bjson$/
