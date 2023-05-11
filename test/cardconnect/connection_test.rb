@@ -11,25 +11,25 @@ describe CardConnect::Connection do
 
   describe '#connection' do
     it 'must have user agent in the headers' do
-      @connection.headers['User-Agent'].must_equal "CardConnectRubyGem/#{CardConnect::VERSION}"
+        _(@connection.headers['User-Agent']).must_equal "CardConnectRubyGem/#{CardConnect::VERSION}"
     end
 
     it 'must have a URL that matches the configured endpoint' do
-      @connection.url_prefix.host.must_equal URI.parse(CardConnect.configuration.endpoint).host
-      @connection.url_prefix.scheme.must_equal 'https'
+      _(@connection.url_prefix.host).must_equal URI.parse(CardConnect.configuration.endpoint).host
+      _(@connection.url_prefix.scheme).must_equal 'https'
     end
 
     describe 'Faraday handlers' do
       it 'must have a handler for basic authentication first' do
-        @connection.builder.handlers.first.must_be :===, Faraday::Request::Authorization
+        _(@connection.builder.handlers.first).must_be :===, Faraday::Request::Authorization
       end
 
       it 'must have a handler for encoding the request as json second' do
-        @connection.builder.handlers[1].must_be :===, Faraday::Request::Json
+        _(@connection.builder.handlers[1]).must_be :===, Faraday::Request::Json
       end
 
       it 'must have a handler for parsing the json response third' do
-        @connection.builder.handlers[2].must_be :===, Faraday::Response::Json
+        _(@connection.builder.handlers[2]).must_be :===, Faraday::Response::Json
       end
 
       it 'has ssl verification on by default' do
