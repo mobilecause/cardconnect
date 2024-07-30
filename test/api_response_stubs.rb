@@ -14,7 +14,8 @@ def valid_auth_response # rubocop:disable Metrics/MethodLength
     'respproc' => 'FNOR',
     'commcard' => 'N',
     'profileid' => '12345678',
-    'acctid' => nil
+    'acctid' => nil,
+    'expiry' => nil
   }
 end
 
@@ -52,7 +53,8 @@ def valid_inquire_response # rubocop:disable Metrics/MethodLength
     'name' => 'TOM JONES',
     'capturedate' => '20180326065748',
     'batchid' => '1900941569',
-    'settledate' => '20180327143721'
+    'settledate' => '20180327143721',
+    'expiry' => nil
   }
 end
 

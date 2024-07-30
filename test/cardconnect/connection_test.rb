@@ -24,14 +24,6 @@ describe CardConnect::Connection do
         @connection.builder.handlers.first.must_be :===, Faraday::Request::BasicAuthentication
       end
 
-      it 'must have a handler for encoding the request as json second' do
-        @connection.builder.handlers[1].must_be :===, FaradayMiddleware::EncodeJson
-      end
-
-      it 'must have a handler for parsing the json response third' do
-        @connection.builder.handlers[2].must_be :===, FaradayMiddleware::ParseJson
-      end
-
       it 'has ssl verification on by default' do
         assert(@connection.ssl.verify?)
       end
